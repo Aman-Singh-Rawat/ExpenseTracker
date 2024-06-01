@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgViewPager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_gain_total_control_of_your_money"
+            app:layout_constraintBottom_toTopOf="@+id/tvOnboardingTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvOnboardingTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_13sdp"
+            android:gravity="center_horizontal"
+            android:text="@string/gain_total_control_of_your_money"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_30ssp"
+            app:fontFamily="@font/inter_bold"
+            app:layout_constraintBottom_toTopOf="@+id/tvOnboardingDescription"
+            app:layout_constraintEnd_toEndOf="@id/glOnboardingEnd"
+            app:layout_constraintStart_toStartOf="@id/glOnboardingStart" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvOnboardingDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_28sdp"
+            android:gravity="center"
+            android:text="Become your own money manager and make every cent count"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_13ssp"
+            app:fontFamily="@font/inter_medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/glOnboardingEnd"
+            app:layout_constraintStart_toStartOf="@id/glOnboardingStart" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glOnboardingStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.06" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glOnboardingEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.94" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

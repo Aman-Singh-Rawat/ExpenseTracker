@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Expense Tracker</string>
+    <string name="gain_total_control_of_your_money">Gain total control of your money</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="colored_text">This is <font color='#FF0000'>red</font> and this is <font color='#0000FF'>blue</font>.</string>
+    <string name="by_signing_up_you_agree_to_the_terms_of_service_and_privacy_policy">By signing up, you agree to the <font color='#7F3DFF'>Terms of Service and Privacy Policy</font></string>
+    <string name="login_underline"><u>Login</u></string>
+    <string name="sign_up_underline"><u>Sign Up</u></string>
 </resources>

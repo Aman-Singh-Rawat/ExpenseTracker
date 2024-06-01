@@ -13,11 +13,18 @@
         android:theme="@style/Theme.ExpenseTracker"
         tools:targetApi="31">
         <activity
-            android:name=".presenter.screen.activity.OnboardingActivity"
-            android:exported="false"/>
+            android:name=".presenter.screen.activity.AuthContainer"
+            android:exported="false" />
+        <activity
+            android:name=".presenter.screen.activity.onboarding.OnboardingActivity"
+            android:exported="false"
+            android:windowActionBar="false"
+            android:windowNoTitle="true" />
         <activity
             android:name=".presenter.screen.activity.LaunchActivity"
-            android:exported="true" >
+            android:exported="true"
+            android:windowActionBar="false"
+            android:windowNoTitle="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

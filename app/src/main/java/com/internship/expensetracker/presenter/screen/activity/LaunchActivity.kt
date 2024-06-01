@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.internship.expensetracker.R
+import com.internship.expensetracker.presenter.screen.activity.onboarding.OnboardingActivity
 
 class LaunchActivity : AppCompatActivity() {
     private val tvAppName: TextView
