@@ -1,4 +1,4 @@
-package com.internship.expensetracker.presenter.screen.activity.onboarding
+package com.internship.expensetracker.data.models
 
 data class OnboardingItem(
     val img: Int,

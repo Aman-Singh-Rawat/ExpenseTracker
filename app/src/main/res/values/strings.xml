@@ -7,4 +7,5 @@
     <string name="by_signing_up_you_agree_to_the_terms_of_service_and_privacy_policy">By signing up, you agree to the <font color='#7F3DFF'>Terms of Service and Privacy Policy</font></string>
     <string name="login_underline"><u>Login</u></string>
     <string name="sign_up_underline"><u>Sign Up</u></string>
+    <string name="don_t_have_an_account_yet">Don\'t have an account yet?</string>
 </resources>

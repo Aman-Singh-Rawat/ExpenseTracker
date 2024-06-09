@@ -8,8 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.internship.expensetracker.R
+import com.internship.expensetracker.data.models.OnboardingItem
 import com.internship.expensetracker.databinding.ActivityOnboardingBinding
-import com.internship.expensetracker.presenter.screen.activity.AuthContainer
+import com.internship.expensetracker.presenter.screen.activity.AuthContainerFragment
 
 class OnboardingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOnboardingBinding
@@ -23,8 +24,17 @@ class OnboardingActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        var intent: Intent
         binding.btnSignUp.setOnClickListener {
-            startActivity(Intent(this, AuthContainer::class.java))
+            intent = Intent(this, AuthContainerFragment::class.java)
+            intent.putExtra("user", "signUp")
+            startActivity(intent)
+        }
+        binding.btnLogin.setOnClickListener {
+            intent = Intent(this, AuthContainerFragment::class.java)
+            intent.putExtra("user", "login")
+            startActivity(intent)
         }
         viewPagerFunctionality()
     }

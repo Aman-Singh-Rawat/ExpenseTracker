@@ -15,4 +15,18 @@
         android:name="com.internship.expensetracker.presenter.screen.fragment.auth.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="com.internship.expensetracker.presenter.screen.fragment.auth.ForgetPassword"
+        android:label="fragment_forget_password"
+        tools:layout="@layout/fragment_forget_password" >
+        <action
+            android:id="@+id/action_forgetPasswordFragment_to_forgetSuccessPassword"
+            app:destination="@id/forgetSuccessPassword" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgetSuccessPassword"
+        android:name="com.internship.expensetracker.presenter.screen.fragment.auth.ForgetPasswordSuccessFragment"
+        android:label="fragment_forget_password_success"
+        tools:layout="@layout/fragment_forget_password_success" />
 </navigation>

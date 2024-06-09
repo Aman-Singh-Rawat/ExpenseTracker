@@ -8,6 +8,6 @@
     android:id="@+id/fragmentContainerView"
     android:name="androidx.navigation.fragment.NavHostFragment"
     app:navGraph="@navigation/navigation_auth"
-    tools:context=".presenter.screen.activity.AuthContainer">
+    tools:context=".presenter.screen.activity.AuthContainerFragment">
 
 </androidx.fragment.app.FragmentContainerView>

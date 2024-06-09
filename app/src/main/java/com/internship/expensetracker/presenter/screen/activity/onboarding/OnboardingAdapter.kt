@@ -3,6 +3,7 @@ package com.internship.expensetracker.presenter.screen.activity.onboarding
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.internship.expensetracker.data.models.OnboardingItem
 import com.internship.expensetracker.databinding.OnboardingViewpagerItemLayoutBinding
 
 class OnboardingAdapter(private val list: MutableList<OnboardingItem>): RecyclerView.Adapter<OnboardingAdapter.OnboardingViewHolder>() {
