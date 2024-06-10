@@ -11,4 +11,9 @@
     <color name="violate_light">#EEE5FF</color>
     <color name="violate">#7F3DFF</color>
     <color name="blue_20">#BDDCFF</color>
+    <color name="yellow_60">#FCCC6F</color>
+    <color name="yellow_40">#FCDDA1</color>
+    <color name="yellow_20">#FCEED4</color>
+    <color name="green">#00A86B</color>
+    <color name="red">#FD3C4A</color>
 </resources>

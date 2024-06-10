@@ -13,20 +13,17 @@
         android:theme="@style/Theme.ExpenseTracker"
         tools:targetApi="31" >
         <activity android:name=".presenter.screen.activity.HomeContainerActivity"
-            android:exported="false"/>
+            android:exported="false"
+            android:theme="@style/HomeContainer"/>
         <activity
             android:name=".presenter.screen.activity.AuthContainerFragment"
             android:exported="false" />
         <activity
             android:name=".presenter.screen.activity.onboarding.OnboardingActivity"
-            android:exported="false"
-            android:windowActionBar="false"
-            android:windowNoTitle="true" />
+            android:exported="false" />
         <activity
             android:name=".presenter.screen.activity.LaunchActivity"
-            android:exported="true"
-            android:windowActionBar="false"
-            android:windowNoTitle="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

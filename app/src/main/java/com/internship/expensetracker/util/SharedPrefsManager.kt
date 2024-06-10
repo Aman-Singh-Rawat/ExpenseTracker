@@ -17,7 +17,7 @@ class SharedPrefsManager private constructor(private val context: Context) {
         @Synchronized
         fun getInstance(context: Context): SharedPrefsManager {
             if (instance == null)
-                instance =SharedPrefsManager(context)
+                instance = SharedPrefsManager(context)
 
             return instance!!
         }
@@ -27,9 +27,24 @@ class SharedPrefsManager private constructor(private val context: Context) {
         putString(Keys.USER, gson.toJson(user))
     }
 
-    private fun putString(key: String, value: String) {
+    fun putString(key: String, value: String) {
         val editor = sharedPreferences.edit()
         editor.putString(key, value)
         editor.apply()
     }
+
+    fun putBooleans(key: String, value: Boolean) {
+        val editor = sharedPreferences.edit()
+        editor.putBoolean(key, value)
+        editor.apply()
+    }
+
+    fun getBoolean(key: String, defaultValue: Boolean): Boolean {
+        return sharedPreferences.getBoolean(key, defaultValue)
+    }
+}
+
+object PrefKeys {
+    const val IS_LOGGED_IN = "is_logged_in"
+    const val USER = "logged_in_user"
 }
