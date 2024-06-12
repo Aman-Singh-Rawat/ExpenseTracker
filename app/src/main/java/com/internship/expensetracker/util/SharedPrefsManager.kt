@@ -27,10 +27,22 @@ class SharedPrefsManager private constructor(private val context: Context) {
         putString(Keys.USER, gson.toJson(user))
     }
 
+    fun getUser(): User? {
+        return try {
+            val json = getString(PrefKeys.USER, "")
+            gson.fromJson(json, User::class.java)
+        } catch (e: Exception) {
+            null
+        }
+    }
     fun putString(key: String, value: String) {
         val editor = sharedPreferences.edit()
         editor.putString(key, value)
         editor.apply()
+    }
+
+    fun getString(key: String, defaultValue: String): String? {
+        return sharedPreferences.getString(key, defaultValue)
     }
 
     fun putBooleans(key: String, value: Boolean) {

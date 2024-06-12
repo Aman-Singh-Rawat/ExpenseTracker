@@ -5,56 +5,83 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.internship.expensetracker.R
+import com.internship.expensetracker.core.BaseFragment
+import com.internship.expensetracker.data.models.RecentTransItem
+import com.internship.expensetracker.databinding.FragmentHomeBinding
+import com.internship.expensetracker.presenter.adapters.RecentTransAdapter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+class HomeFragment : BaseFragment() {
+    private var isSelectedTime: String = "Today"
+    private lateinit var binding: FragmentHomeBinding
+    private val recentTransAdapter = RecentTransAdapter()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        userTagClickHandle()
+        applyRecentRecycler()
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun applyRecentRecycler() {
+        binding.rvRecentTrans.adapter = recentTransAdapter
+        recentTransAdapter.updateUi(recentList = transList())
+    }
+
+    private fun userTagClickHandle() {
+        binding.apply {
+            tvTagToday.setOnClickListener {
+                resetTags()
+                tvTagToday.setBackgroundResource(R.drawable.bg_weeks)
+                tvTagToday.setTextColor(ContextCompat.getColor(requireContext(), R.color.yellow_100))
+                isSelectedTime = "Today"
             }
+            tvTagWeek.setOnClickListener {
+                resetTags()
+                tvTagWeek.setBackgroundResource(R.drawable.bg_weeks)
+                tvTagWeek.setTextColor(ContextCompat.getColor(requireContext(), R.color.yellow_100))
+                isSelectedTime = "Week"
+            }
+            tvTagMonth.setOnClickListener {
+                resetTags()
+                tvTagMonth.setBackgroundResource(R.drawable.bg_weeks)
+                tvTagMonth.setTextColor(ContextCompat.getColor(requireContext(), R.color.yellow_100))
+                isSelectedTime = "Month"
+            }
+            tvTagYear.setOnClickListener {
+                resetTags()
+                tvTagYear.setBackgroundResource(R.drawable.bg_weeks)
+                tvTagYear.setTextColor(ContextCompat.getColor(requireContext(), R.color.yellow_100))
+                isSelectedTime = "Year"
+            }
+        }
+    }
+
+    private fun resetTags() {
+        binding.apply {
+            tvTagToday.background = null
+            tvTagToday.setTextColor(ContextCompat.getColor(requireContext(), R.color.gray))
+
+            tvTagWeek.background = null
+            tvTagWeek.setTextColor(ContextCompat.getColor(requireContext(), R.color.gray))
+
+            tvTagMonth.background = null
+            tvTagMonth.setTextColor(ContextCompat.getColor(requireContext(), R.color.gray))
+
+            tvTagYear.background = null
+            tvTagYear.setTextColor(ContextCompat.getColor(requireContext(), R.color.gray))
+        }
+    }
+
+    private fun transList(): List<RecentTransItem> {
+        return listOf(RecentTransItem(R.drawable.ic_shopping_bag, "Shopping",
+            "Buy Some grocery", 120, "10:00 AM"),
+            RecentTransItem(R.drawable.ic_subscription, "Subscription",
+                "Disney+ Annual", 80, "03:30 PM"),
+            RecentTransItem(R.drawable.ic_food, "Food", "Buy a ramen",
+                32, "07:30 PM"))
     }
 }

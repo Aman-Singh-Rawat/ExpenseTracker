@@ -12,6 +12,7 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_profile_section"
@@ -26,23 +27,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.05" />
+                app:layout_constraintGuide_percent="0.04" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/glFragHomeTopEnd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.95" />
+                app:layout_constraintGuide_percent="0.96" />
 
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/imgHomeProfile"
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_alignParentStart="true"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:background="@drawable/bg_profile_image"
                 android:padding="@dimen/_2sdp"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:src="@drawable/img_dummy_profile"
                 app:layout_constraintStart_toStartOf="@id/glFragHomeTopStart"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -61,12 +62,12 @@
                 android:paddingTop="@dimen/_3sdp"
                 android:paddingEnd="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_3sdp"
-                tools:text="June"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@id/imgHomeProfile"
                 app:layout_constraintEnd_toEndOf="@id/glFragHomeTopEnd"
                 app:layout_constraintStart_toStartOf="@id/glFragHomeTopStart"
-                app:layout_constraintTop_toTopOf="@id/imgHomeProfile" />
+                app:layout_constraintTop_toTopOf="@id/imgHomeProfile"
+                android:text="June" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
@@ -80,76 +81,76 @@
                 android:id="@+id/tvAccountText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Account Balance"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/_10ssp"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_marginTop="@dimen/_12sdp"
-                app:layout_constraintTop_toBottomOf="@id/tvMonth"
+                app:layout_constraintEnd_toEndOf="@id/glFragHomeTopEnd"
                 app:layout_constraintStart_toStartOf="@id/glFragHomeTopStart"
-                app:layout_constraintEnd_toEndOf="@id/glFragHomeTopEnd"/>
+                app:layout_constraintTop_toBottomOf="@id/tvMonth" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvAccountBalance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$9400"
+                android:fontFamily="@font/poppins_semibold"
                 android:letterSpacing="0.03"
+                android:text="$9400"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_28ssp"
-                android:fontFamily="@font/poppins_semibold"
-                app:layout_constraintTop_toBottomOf="@id/tvAccountText"
+                app:layout_constraintEnd_toEndOf="@id/glFragHomeTopEnd"
                 app:layout_constraintStart_toStartOf="@id/glFragHomeTopStart"
-                app:layout_constraintEnd_toEndOf="@id/glFragHomeTopEnd"/>
+                app:layout_constraintTop_toBottomOf="@id/tvAccountText" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tvAccountBalance"
+                app:layout_constraintEnd_toEndOf="@id/glFragHomeTopEnd"
                 app:layout_constraintStart_toStartOf="@id/glFragHomeTopStart"
-                app:layout_constraintEnd_toEndOf="@id/glFragHomeTopEnd">
+                app:layout_constraintTop_toBottomOf="@id/tvAccountBalance">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
                     android:background="@drawable/bg_income"
                     android:gravity="center"
                     android:paddingTop="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_weight="1">
+                    android:paddingBottom="@dimen/_10sdp">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_income"
-                        android:layout_marginStart="10dp"/>
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/ic_income" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:gravity="start"
-                        android:layout_weight="1"
                         android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:gravity="start"
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Income"
                             android:fontFamily="@font/poppins"
-                            android:textColor="@color/white"
-                            android:includeFontPadding="false"/>
+                            android:includeFontPadding="false"
+                            android:text="Income"
+                            android:textColor="@color/white" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="$5000"
-                            android:letterSpacing="0.03"
-                            android:textSize="@dimen/_15ssp"
                             android:fontFamily="@font/poppins_medium"
+                            android:includeFontPadding="false"
+                            android:letterSpacing="0.03"
+                            android:text="$5000"
                             android:textColor="@color/white"
-                            android:includeFontPadding="false"/>
+                            android:textSize="@dimen/_15ssp" />
 
                     </LinearLayout>
 
@@ -158,43 +159,43 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:background="@drawable/bg_expense"
                     android:gravity="center"
                     android:paddingTop="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_10sdp"
-                    android:layout_weight="1">
+                    android:paddingBottom="@dimen/_10sdp">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_expense"
-                        android:layout_marginStart="10dp"/>
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/ic_expense" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:gravity="start"
-                        android:layout_weight="1"
                         android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:gravity="start"
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Expenses"
                             android:fontFamily="@font/poppins"
-                            android:textColor="@color/white"
-                            android:includeFontPadding="false"/>
+                            android:includeFontPadding="false"
+                            android:text="Expenses"
+                            android:textColor="@color/white" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="$5000"
-                            android:letterSpacing="0.03"
-                            android:textSize="@dimen/_15ssp"
                             android:fontFamily="@font/poppins_medium"
+                            android:includeFontPadding="false"
+                            android:letterSpacing="0.03"
+                            android:text="$5000"
                             android:textColor="@color/white"
-                            android:includeFontPadding="false"/>
+                            android:textSize="@dimen/_15ssp" />
 
                     </LinearLayout>
 
@@ -204,6 +205,153 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSpendFrequency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Spend Frequency"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15ssp"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:layout_constraintStart_toStartOf="@id/glFragHomeStart"
+            app:layout_constraintTop_toBottomOf="@id/clProfile" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgGraph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_dummy_graph"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSpendFrequency"/>
+
+        <LinearLayout
+            android:id="@+id/llTimeTags"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/imgGraph"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTagToday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_weeks"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:paddingStart="@dimen/_18sdp"
+                android:paddingTop="@dimen/_6sdp"
+                android:paddingEnd="@dimen/_18sdp"
+                android:paddingBottom="@dimen/_4sdp"
+                android:text="Today"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:textColor="@color/yellow_100"
+                android:textSize="@dimen/_11ssp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTagWeek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:paddingStart="@dimen/_18sdp"
+                android:paddingTop="@dimen/_6sdp"
+                android:paddingEnd="@dimen/_18sdp"
+                android:paddingBottom="@dimen/_4sdp"
+                android:text="Week"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/_11ssp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTagMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:paddingStart="@dimen/_18sdp"
+                android:paddingTop="@dimen/_6sdp"
+                android:paddingEnd="@dimen/_18sdp"
+                android:paddingBottom="@dimen/_4sdp"
+                android:text="Month"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/_11ssp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTagYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:paddingStart="@dimen/_18sdp"
+                android:paddingTop="@dimen/_6sdp"
+                android:paddingEnd="@dimen/_18sdp"
+                android:paddingBottom="@dimen/_4sdp"
+                android:text="Year"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/_11ssp"/>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRecentTrans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Recent Transaction"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15ssp"
+            android:layout_marginTop="@dimen/_24sdp"
+            app:layout_constraintStart_toStartOf="@id/glFragHomeStart"
+            app:layout_constraintTop_toBottomOf="@id/llTimeTags" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSeeAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_see_all"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:paddingStart="@dimen/_12sdp"
+            android:paddingTop="@dimen/_4sdp"
+            android:paddingEnd="@dimen/_12sdp"
+            android:paddingBottom="@dimen/_2sdp"
+            android:text="See All"
+            android:textColor="@color/violate"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvRecentTrans"
+            app:layout_constraintEnd_toEndOf="@+id/glFragHomeEnd"
+            app:layout_constraintTop_toTopOf="@+id/tvRecentTrans" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRecentTrans"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="vertical"
+            tools:listitem="@layout/recent_transacation_item"
+            app:layout_constraintTop_toBottomOf="@id/tvSeeAll"
+            app:layout_constraintEnd_toEndOf="@id/glFragHomeEnd"
+            app:layout_constraintStart_toStartOf="@id/glFragHomeStart"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glFragHomeStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.04"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glFragHomeEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.96"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
