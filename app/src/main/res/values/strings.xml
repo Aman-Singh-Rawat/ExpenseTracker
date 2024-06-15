@@ -8,4 +8,13 @@
     <string name="login_underline"><u>Login</u></string>
     <string name="sign_up_underline"><u>Sign Up</u></string>
     <string name="don_t_have_an_account_yet">Don\'t have an account yet?</string>
+
+<!--      Category Array              -->
+    <string-array name="addExpenseCategoryArray">
+        <item>First</item>
+        <item>First</item>
+        <item>First</item>
+        <item>First</item>
+        <item>First</item>
+    </string-array>
 </resources>

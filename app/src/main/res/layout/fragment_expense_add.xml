@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/red"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presenter.screen.fragment.home.ExpenseAdd">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/red"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/ic_back_arrow">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Expense"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/white"
+                android:layout_gravity="center"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:padding="@dimen/_12sdp"
+        android:background="@drawable/bg_bottom_expense_rounded_card">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/addExpenseCategoryArray"
+            android:background="@drawable/bg_spinner_category"
+            android:layout_marginTop="@dimen/_10sdp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            app:hintEnabled="false"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Description"
+                android:textColorHint="@color/light_20"
+                android:textSize="@dimen/_13ssp"
+                android:letterSpacing="0.01"
+                android:fontFamily="@font/poppins"
+                android:inputType="textEmailAddress"
+                android:background="@drawable/bg_edittext"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_spinner_category"
+            android:layout_marginTop="@dimen/_16sdp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:background="@drawable/bg_add_expense_attachment">
+
+            <androidx.appcompat.widget.AppCompatCheckedTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add attachment"
+                android:textAlignment="center"
+                android:textSize="@dimen/_13ssp"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/light_20"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.01"
+                android:drawablePadding="@dimen/_14sdp"
+                android:drawableStart="@drawable/img_attachment"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

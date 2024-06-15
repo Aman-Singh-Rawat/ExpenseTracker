@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import com.internship.expensetracker.R
 import com.internship.expensetracker.core.BaseFragment
 import com.internship.expensetracker.data.models.RecentTransItem
@@ -83,5 +84,9 @@ class HomeFragment : BaseFragment() {
                 "Disney+ Annual", 80, "03:30 PM"),
             RecentTransItem(R.drawable.ic_food, "Food", "Buy a ramen",
                 32, "07:30 PM"))
+    }
+
+    fun navigateAddFragment() {
+        findNavController().navigate(R.id.expenseAddFragment)
     }
 }

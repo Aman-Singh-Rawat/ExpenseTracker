@@ -18,5 +18,6 @@
     <color name="yellow_20">#FCEED4</color>
     <color name="green">#00A86B</color>
     <color name="red">#FD3C4A</color>
-
+    <color name="light_20">#91919F</color>
+    <color name="very_light_20">#e9ecef</color>
 </resources>

@@ -10,4 +10,14 @@
         android:name="com.internship.expensetracker.presenter.screen.fragment.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/expenseAddFragment"
+        android:name="com.internship.expensetracker.presenter.screen.fragment.home.ExpenseAdd"
+        android:label="fragment_expense_add"
+        tools:layout="@layout/fragment_expense_add" />
+    <fragment
+        android:id="@+id/transactionFragment"
+        android:name="com.internship.expensetracker.presenter.screen.fragment.transaction.TransactionFragment"
+        android:label="fragment_transaction"
+        tools:layout="@layout/fragment_transaction" />
 </navigation>

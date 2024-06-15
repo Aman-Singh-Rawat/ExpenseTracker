@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presenter.screen.activity.HomeContainerActivity">
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerHome"
@@ -16,51 +17,66 @@
         app:navGraph="@navigation/navigation_home"
         android:name="androidx.navigation.fragment.NavHostFragment"/>
 
-    <LinearLayout
-        android:id="@+id/llHomeContainer"
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_gravity="bottom"
+        android:backgroundTint="@color/white"
+        app:fabCradleRoundedCornerRadius="10dp"
+        app:fabCradleVerticalOffset="10dp">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#F8FFF3"/>
-
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="@dimen/_100sdp">
+            app:menu="@menu/bottom_nav_menu"
+            android:background="@drawable/transparent"
+            app:labelVisibilityMode="labeled"/>
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottomNavView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:labelVisibilityMode="labeled"
-                app:menu="@menu/bottom_nav_menu" />
-
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
+    </com.google.android.material.bottomappbar.BottomAppBar>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/mainFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_add"
-        app:layout_constraintBottom_toTopOf="@+id/llHomeContainer"
-        app:layout_constraintEnd_toEndOf="@+id/llHomeContainer"
-        app:layout_constraintStart_toStartOf="@+id/llHomeContainer"
-        app:layout_constraintTop_toTopOf="@+id/llHomeContainer"
         app:tint="@color/white"
-        android:elevation="@dimen/_30sdp"/>
+        app:layout_anchor="@id/bottomAppBar"
+        app:fabCustomSize="@dimen/_50sdp"
+        app:fabCradleMargin="@dimen/_20sdp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Additional FABs -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabIncome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_half_income"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        app:tint="@color/white"
+        app:fabCustomSize="@dimen/_50sdp"
+        android:backgroundTint="@color/green"
+        android:layout_marginStart="@dimen/_90sdp"
+        android:layout_marginBottom="@dimen/_80sdp"
+        app:layout_anchor="@id/bottomAppBar"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabExpense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_half_expense"
+        app:tint="@color/white"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        app:fabCustomSize="@dimen/_50sdp"
+        android:backgroundTint="@color/red"
+        android:layout_marginStart="@dimen/_178sdp"
+        android:layout_marginBottom="@dimen/_78sdp"
+        app:layout_anchor="@id/bottomAppBar"/>
 
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 <!--
     <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
