@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_8sdp"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tvSpinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Spinner Item"
+        android:layout_weight="1"
+        android:textSize="@dimen/_13ssp"
+        android:fontFamily="@font/poppins"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:src="@drawable/ic_arrow_down_spinner"/>
+</LinearLayout>

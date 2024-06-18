@@ -5,37 +5,55 @@
     android:layout_height="match_parent"
     android:background="@color/red"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presenter.screen.fragment.home.ExpenseAdd">
+    tools:context=".presenter.screen.fragment.home.ExpenseAddFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/red"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivExpenseBackPressed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back_arrow"
+        app:tint="@color/white"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_margin="@dimen/_16sdp"
+        android:layout_alignParentStart="true"
+        android:foreground="?android:selectableItemBackground"/>
 
-        <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:navigationIcon="@drawable/ic_back_arrow">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Expense"
+        android:layout_margin="@dimen/_16sdp"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="@dimen/_15ssp"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"/>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Expense"
-                android:fontFamily="@font/poppins_medium"
-                android:textSize="@dimen/_15ssp"
-                android:textColor="@color/white"
-                android:layout_gravity="center"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvExpensesMoney"
+        android:layout_alignStart="@+id/ivExpenseBackPressed"
+        android:text="How much?"
+        android:textColor="@color/light_80"
+        android:textSize="@dimen/_14ssp"
+        android:fontFamily="@font/poppins_medium"/>
 
-        </androidx.appcompat.widget.Toolbar>
-
-    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvExpensesMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/llExpenseCorners"
+        android:layout_alignStart="@+id/ivExpenseBackPressed"
+        android:text="$0"
+        android:includeFontPadding="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_60ssp"
+        android:fontFamily="@font/poppins_medium"/>
 
     <LinearLayout
+        android:id="@+id/llExpenseCorners"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -44,11 +62,13 @@
         android:background="@drawable/bg_bottom_expense_rounded_card">
 
         <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinnerCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/addExpenseCategoryArray"
-            android:background="@drawable/bg_spinner_category"
-            android:layout_marginTop="@dimen/_10sdp"/>
+            android:layout_marginTop="@dimen/_10sdp"
+            android:spinnerMode="dropdown"
+            android:overlapAnchor="false"
+            android:background="@drawable/bg_spinner_category"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -66,22 +86,66 @@
                 android:textSize="@dimen/_13ssp"
                 android:letterSpacing="0.01"
                 android:fontFamily="@font/poppins"
-                android:inputType="textEmailAddress"
+                android:inputType="textMultiLine"
                 android:background="@drawable/bg_edittext"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinnerWallet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_spinner_category"
-            android:layout_marginTop="@dimen/_16sdp"/>
+            android:layout_marginTop="@dimen/_16sdp"
+            android:spinnerMode="dropdown"
+            android:overlapAnchor="false"
+            android:background="@drawable/bg_spinner_category"/>
+
+        <RelativeLayout
+            android:id="@+id/rlExpenseFile"
+            android:layout_width="@dimen/_105sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:visibility="gone">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="0dp"
+                android:layout_margin="@dimen/_4sdp"
+                app:cardBackgroundColor="@color/violate_light">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_planning_ahead"/>
+
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_close"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:selectableItemBackground"
+                android:layout_marginStart="@dimen/_10sdp"/>
+
+        </RelativeLayout>
 
         <LinearLayout
+            android:id="@+id/llAddAttachment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="@dimen/_16sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:selectableItemBackground"
             android:background="@drawable/bg_add_expense_attachment">
 
             <androidx.appcompat.widget.AppCompatCheckedTextView
@@ -100,6 +164,23 @@
         </LinearLayout>
 
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:padding="@dimen/_10sdp"
+            android:text="Continue"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_gravity="bottom"
+            android:foreground="?android:selectableItemBackground"
+            android:background="@drawable/bg_sign_up_btn"/>
 
     </LinearLayout>
 

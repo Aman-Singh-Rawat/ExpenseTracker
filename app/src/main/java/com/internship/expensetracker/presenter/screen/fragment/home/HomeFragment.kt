@@ -1,10 +1,12 @@
 package com.internship.expensetracker.presenter.screen.fragment.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.internship.expensetracker.R
@@ -12,8 +14,9 @@ import com.internship.expensetracker.core.BaseFragment
 import com.internship.expensetracker.data.models.RecentTransItem
 import com.internship.expensetracker.databinding.FragmentHomeBinding
 import com.internship.expensetracker.presenter.adapters.RecentTransAdapter
+import com.internship.expensetracker.presenter.screen.activity.HomeContainerActivity
 
-class HomeFragment : BaseFragment() {
+class HomeFragment : BaseFragment(), HomeContainerActivity.FabCallback {
     private var isSelectedTime: String = "Today"
     private lateinit var binding: FragmentHomeBinding
     private val recentTransAdapter = RecentTransAdapter()
@@ -22,9 +25,23 @@ class HomeFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        return binding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        activity?.window?.statusBarColor = resources.getColor(R.color.yellow_20, null)
+        binding.tvSeeAll.setOnClickListener {
+            findNavController().navigate(R.id.expenseAddFragment)
+        }
         userTagClickHandle()
         applyRecentRecycler()
-        return binding.root
+
     }
 
     private fun applyRecentRecycler() {
@@ -86,7 +103,8 @@ class HomeFragment : BaseFragment() {
                 32, "07:30 PM"))
     }
 
-    fun navigateAddFragment() {
+    override fun onFabClicked() {
         findNavController().navigate(R.id.expenseAddFragment)
     }
+
 }

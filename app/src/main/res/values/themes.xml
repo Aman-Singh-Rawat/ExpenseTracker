@@ -34,4 +34,12 @@
         <item name="android:windowNoTitle">true</item>
 
     </style>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here -->
+        <item name="android:statusBarColor">@color/red</item>
+        <item name="android:windowBackground">@color/red</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
 </resources>

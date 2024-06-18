@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/expenseAddFragment"
-        android:name="com.internship.expensetracker.presenter.screen.fragment.home.ExpenseAdd"
+        android:name="com.internship.expensetracker.presenter.screen.fragment.home.ExpenseAddFragment"
         android:label="fragment_expense_add"
         tools:layout="@layout/fragment_expense_add" />
     <fragment
@@ -20,4 +20,9 @@
         android:name="com.internship.expensetracker.presenter.screen.fragment.transaction.TransactionFragment"
         android:label="fragment_transaction"
         tools:layout="@layout/fragment_transaction" />
+    <dialog
+        android:id="@+id/expenseAddBottomSheetFragment"
+        android:name="com.internship.expensetracker.presenter.screen.fragment.home.ExpenseAddBottomSheetFragment"
+        android:label="fragment_expense_add_bottom_sheet"
+        tools:layout="@layout/fragment_expense_add_bottom_sheet" />
 </navigation>

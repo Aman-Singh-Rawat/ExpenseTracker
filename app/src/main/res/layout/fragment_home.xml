@@ -331,13 +331,16 @@
             android:id="@+id/rvRecentTrans"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="?attr/actionBarSize"
             android:orientation="vertical"
-            tools:listitem="@layout/recent_transacation_item"
-            app:layout_constraintTop_toBottomOf="@id/tvSeeAll"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="@id/glFragHomeEnd"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/glFragHomeStart"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            app:layout_constraintTop_toBottomOf="@id/tvSeeAll"
+            tools:listitem="@layout/recent_transacation_item" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/glFragHomeStart"
