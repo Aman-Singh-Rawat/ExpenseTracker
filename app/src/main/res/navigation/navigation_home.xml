@@ -24,5 +24,15 @@
         android:id="@+id/expenseAddBottomSheetFragment"
         android:name="com.internship.expensetracker.presenter.screen.fragment.home.ExpenseAddBottomSheetFragment"
         android:label="fragment_expense_add_bottom_sheet"
-        tools:layout="@layout/fragment_expense_add_bottom_sheet" />
+        tools:layout="@layout/expense_add_bottom_sheet_fragment" />
+    <dialog
+        android:id="@+id/filterTransactionBottomSheet"
+        android:name="com.internship.expensetracker.presenter.screen.fragment.transaction.FilterTransactionBottomSheet"
+        android:label="fragment_filter_transaction_bottom_sheet"
+        tools:layout="@layout/fragment_filter_transaction_bottom_sheet" />
+    <fragment
+        android:id="@+id/detailTransaction"
+        android:name="com.internship.expensetracker.presenter.screen.fragment.detail.DetailTransaction"
+        android:label="fragment_detail_transaction"
+        tools:layout="@layout/fragment_detail_transaction" />
 </navigation>

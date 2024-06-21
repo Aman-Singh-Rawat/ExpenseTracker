@@ -1,14 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
     tools:context=".presenter.screen.fragment.transaction.TransactionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTranMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:background="@drawable/bg_transaction_month_name"
+            android:drawableStart="@drawable/ic_drop_down"
+            android:drawablePadding="@dimen/_2sdp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:letterSpacing="0.01"
+            android:paddingStart="@dimen/_4sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingEnd="@dimen/_9sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:text="Month"
+            android:clickable="true"
+            android:focusable="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:foreground="?android:selectableItemBackground"
+            app:layout_constraintStart_toStartOf="@id/glFragTranStart"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_filter"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingVertical="@dimen/_4sdp"
+            android:paddingHorizontal="@dimen/_4sdp"
+            android:background="@drawable/bg_filter_icon"
+            android:foreground="?android:selectableItemBackground"
+            app:layout_constraintTop_toTopOf="@+id/tvTranMonth"
+            app:layout_constraintEnd_toEndOf="@id/glFragTranEnd"
+            app:layout_constraintBottom_toBottomOf="@id/tvTranMonth"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/_9sdp"
+            app:cardElevation="0dp"
+            android:elevation="0dp"
+            android:layout_marginTop="@dimen/_18sdp"
+            app:cardBackgroundColor="@color/violate_20"
+            app:layout_constraintStart_toStartOf="@id/glFragTranStart"
+            app:layout_constraintEnd_toEndOf="@id/glFragTranEnd"
+            app:layout_constraintTop_toBottomOf="@id/imgFilter">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_13ssp"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/violate"
+                android:letterSpacing="0.01"
+                android:elevation="0dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="start|center_vertical"
+                android:paddingTop="@dimen/_8sdp"
+                android:paddingBottom="@dimen/_8sdp"
+                android:paddingStart="@dimen/_14sdp"
+                android:paddingEnd="@dimen/_12sdp"
+                android:layout_gravity="center"
+                android:foreground="?android:selectableItemBackground"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:text="See your financial report" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvToday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Today"
+            style="@style/daysText"
+            app:layout_constraintStart_toStartOf="@id/glFragTranStart"
+            app:layout_constraintEnd_toEndOf="@id/glFragTranEnd"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTodayTrans"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="?attr/actionBarSize"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="@id/glFragTranEnd"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/glFragTranStart"
+            app:layout_constraintTop_toBottomOf="@id/tvToday"
+            tools:listitem="@layout/recent_transacation_item" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvYesterday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Yesterday"
+            style="@style/daysText"
+            android:layout_marginBottom="?attr/actionBarSize"
+            app:layout_constraintStart_toStartOf="@id/glFragTranStart"
+            app:layout_constraintEnd_toEndOf="@id/glFragTranEnd"
+            app:layout_constraintTop_toBottomOf="@+id/rvTodayTrans"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="@id/glFragTranEnd"
+            app:layout_constraintStart_toStartOf="@id/glFragTranStart"
+            app:layout_constraintTop_toBottomOf="@id/tvYesterday">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvYesterdayTrans"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="?attr/actionBarSize"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintHorizontal_bias="0.0"
+                tools:listitem="@layout/recent_transacation_item" />
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glFragTranStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glFragTranEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>

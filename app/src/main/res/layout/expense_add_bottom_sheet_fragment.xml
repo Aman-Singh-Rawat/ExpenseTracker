@@ -25,6 +25,7 @@
             app:cardBackgroundColor="@color/violate_light">
 
             <LinearLayout
+                android:id="@+id/llCamera"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"

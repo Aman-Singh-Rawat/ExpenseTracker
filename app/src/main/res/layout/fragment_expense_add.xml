@@ -25,9 +25,7 @@
         android:gravity="center"
         android:text="Expense"
         android:layout_margin="@dimen/_16sdp"
-        android:fontFamily="@font/poppins_medium"
-        android:textSize="@dimen/_15ssp"
-        android:textColor="@color/white"
+        style="@style/fragmentTopTitle"
         android:layout_centerHorizontal="true"/>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -47,10 +45,7 @@
         android:layout_above="@+id/llExpenseCorners"
         android:layout_alignStart="@+id/ivExpenseBackPressed"
         android:text="$0"
-        android:includeFontPadding="false"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_60ssp"
-        android:fontFamily="@font/poppins_medium"/>
+        style="@style/tvMoney"/>
 
     <LinearLayout
         android:id="@+id/llExpenseCorners"

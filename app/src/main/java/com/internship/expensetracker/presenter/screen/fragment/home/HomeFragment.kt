@@ -39,6 +39,7 @@ class HomeFragment : BaseFragment(), HomeContainerActivity.FabCallback {
         binding.tvSeeAll.setOnClickListener {
             findNavController().navigate(R.id.expenseAddFragment)
         }
+        binding.llExpense.setOnClickListener { findNavController().navigate(R.id.detailTransaction) }
         userTagClickHandle()
         applyRecentRecycler()
 

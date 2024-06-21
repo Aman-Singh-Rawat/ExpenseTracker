@@ -11,6 +11,8 @@
     <color name="violate_light">#EEE5FF</color>
     <color name="violate">#7F3DFF</color>
     <color name="violate_20">#EEE5FF</color>
+    <color name="violate_40">#D3BDFF</color>
+    <color name="violate_60">#B18AFF</color>
     <color name="blue_20">#BDDCFF</color>
     <color name="yellow_100">#FCAC12</color>
     <color name="yellow_60">#FCCC6F</color>
@@ -18,8 +20,12 @@
     <color name="yellow_20">#FCEED4</color>
     <color name="green">#00A86B</color>
     <color name="red">#FD3C4A</color>
+    <color name="light_60">#F1F1FA</color>
     <color name="light_20">#91919F</color>
+    <color name="light_40">#E3E5E5</color>
     <color name="light_80">#FCFCFC</color>
     <color name="very_light_20">#e9ecef</color>
     <color name="red_40">#FDA2A9</color>
+
+    <color name="dark_100">#0D0E0F</color>
 </resources>

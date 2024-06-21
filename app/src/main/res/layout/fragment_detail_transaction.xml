@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".presenter.screen.fragment.detail.DetailTransaction">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glFragDetailStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glFragDetailEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <LinearLayout
+            android:id="@+id/llFragDetailTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_detail_top_transaction"
+            android:backgroundTint="@color/red"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_50sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clFragDetailTop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/icFragDetailArrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_back_arrow"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/fragmentTopTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Detail Transaction"
+                    app:layout_constraintBottom_toBottomOf="@id/icFragDetailArrow"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/icFragDetailArrow" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_trash"
+                    app:layout_constraintBottom_toBottomOf="@id/icFragDetailArrow"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/icFragDetailArrow"
+                    app:tint="@color/white" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/tvMoney"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="$120" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:fontFamily="@font/inter_medium"
+                android:gravity="center"
+                android:letterSpacing="0.02"
+                android:text="Buy some grocery"
+                android:textColor="@color/light_80"
+                android:textSize="@dimen/_13ssp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:fontFamily="@font/inter_medium"
+                android:gravity="center"
+                android:letterSpacing="0.02"
+                android:text="Saturday 4 June 2021 \t 16:20"
+                android:textColor="@color/light_80"
+                android:textSize="@dimen/_11ssp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edittext"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/llFragDetailTop"
+            app:layout_constraintEnd_toEndOf="@id/glFragDetailEnd"
+            app:layout_constraintStart_toStartOf="@id/glFragDetailStart"
+            app:layout_constraintTop_toBottomOf="@id/llFragDetailTop">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:paddingVertical="@dimen/_10sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/detailTransactionType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_30sdp"
+                    android:text="Type" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/detailTransactionType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Category" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/detailTransactionType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="@dimen/_20sdp"
+                    android:text="Wallet" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_10sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_22sdp"
+                    android:text="Expense"
+                    style="@style/detailTransactionTypeName"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Shopping"
+                    style="@style/detailTransactionTypeName"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="@dimen/_25sdp"
+                    android:text="Wallet"
+                    style="@style/detailTransactionTypeName"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/viewDash"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:background="@drawable/bg_view_line"
+            app:layout_constraintEnd_toEndOf="@id/glFragDetailEnd"
+            app:layout_constraintStart_toStartOf="@id/glFragDetailStart"
+            app:layout_constraintTop_toBottomOf="@id/llType" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDescriptionTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_11sdp"
+            android:fontFamily="@font/inter_bold"
+            android:letterSpacing="0.01"
+            android:text="Description"
+            android:textColor="@color/light_20"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="@id/glFragDetailEnd"
+            app:layout_constraintStart_toStartOf="@id/glFragDetailStart"
+            app:layout_constraintTop_toBottomOf="@+id/viewDash" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:fontFamily="@font/inter_medium"
+            android:text="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
+            android:textColor="@color/dark_100"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintEnd_toEndOf="@id/glFragDetailEnd"
+            app:layout_constraintStart_toStartOf="@id/glFragDetailStart"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescriptionTitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAttachment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_11sdp"
+            android:fontFamily="@font/inter_bold"
+            android:letterSpacing="0.01"
+            android:text="Attachment"
+            android:textColor="@color/light_20"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="@id/glFragDetailEnd"
+            app:layout_constraintStart_toStartOf="@id/glFragDetailStart"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvTransactionImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="@dimen/_9sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:layout_constraintDimensionRatio="3:1"
+            app:layout_constraintEnd_toEndOf="@id/glFragDetailEnd"
+            app:layout_constraintStart_toStartOf="@id/glFragDetailStart"
+            app:layout_constraintTop_toBottomOf="@id/tvAttachment">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/img_dummy"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/glFragDetailEnd"
+            app:layout_constraintTop_toBottomOf="@id/cvTransactionImage"
+            app:layout_constraintStart_toStartOf="@id/glFragDetailStart">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btnEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:padding="@dimen/_10sdp"
+                android:text="Edit"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:foreground="?android:selectableItemBackground"
+                android:background="@drawable/bg_sign_up_btn"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

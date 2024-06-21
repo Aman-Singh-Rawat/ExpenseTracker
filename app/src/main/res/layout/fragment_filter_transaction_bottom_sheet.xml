@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".presenter.screen.fragment.transaction.FilterTransactionBottomSheet">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/_10sdp">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glFilterBottomStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glFilterBottomEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <View
+            android:id="@+id/littleRoundedView"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:background="@drawable/bg_filter_little_top_rounded_view"
+            app:layout_constraintEnd_toEndOf="@id/glFilterBottomEnd"
+            app:layout_constraintStart_toStartOf="@id/glFilterBottomStart"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFilter"
+            style="@style/tvFilterTransaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:text="Filter Transaction"
+            app:layout_constraintStart_toStartOf="@id/glFilterBottomStart"
+            app:layout_constraintTop_toBottomOf="@+id/littleRoundedView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvReset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_see_all"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:paddingStart="@dimen/_13sdp"
+            android:paddingTop="@dimen/_4sdp"
+            android:paddingEnd="@dimen/_13sdp"
+            android:paddingBottom="@dimen/_2sdp"
+            android:text="Reset"
+            android:textColor="@color/violate"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintBottom_toBottomOf="@id/tvFilter"
+            app:layout_constraintEnd_toEndOf="@+id/glFilterBottomEnd"
+            app:layout_constraintTop_toTopOf="@+id/tvFilter" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFilterBy"
+            style="@style/tvFilterBy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:text="Filter By"
+            app:layout_constraintStart_toStartOf="@id/glFilterBottomStart"
+            app:layout_constraintTop_toBottomOf="@+id/tvFilter" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFilterBy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="@id/glFilterBottomEnd"
+            app:layout_constraintStart_toStartOf="@id/glFilterBottomStart"
+            app:layout_constraintTop_toBottomOf="@id/tvFilterBy"
+            app:spanCount="3"
+            tools:listitem="@layout/filter_by_item" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSortBy"
+            style="@style/tvFilterBy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:text="Sort By"
+            app:layout_constraintStart_toStartOf="@id/glFilterBottomStart"
+            app:layout_constraintTop_toBottomOf="@+id/rvFilterBy" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSortBy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="@id/glFilterBottomEnd"
+            app:layout_constraintStart_toStartOf="@id/glFilterBottomStart"
+            app:layout_constraintTop_toBottomOf="@id/tvSortBy"
+            app:spanCount="3"
+            tools:listitem="@layout/filter_by_item" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCategory"
+            style="@style/tvFilterBy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:text="Category"
+            app:layout_constraintStart_toStartOf="@id/glFilterBottomStart"
+            app:layout_constraintTop_toBottomOf="@+id/rvSortBy" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:letterSpacing="0.01"
+            android:text="Choose Category"
+            android:textColor="@color/dark_100"
+            android:textSize="@dimen/_13sdp"
+            app:fontFamily="@font/poppins_medium"
+            app:layout_constraintStart_toStartOf="@id/glFilterBottomStart"
+            app:layout_constraintTop_toBottomOf="@id/tvCategory" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCategorySelected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:clickable="true"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:drawablePadding="@dimen/_1sdp"
+            android:focusable="true"
+            android:fontFamily="@font/poppins"
+            android:foreground="?android:selectableItemBackground"
+            android:gravity="center"
+            android:letterSpacing="0.01"
+            android:text="0 Selected"
+            android:textColor="@color/light_20"
+            android:textSize="@dimen/_13sdp"
+            app:fontFamily="@font/poppins_medium"
+            app:layout_constraintEnd_toEndOf="@+id/glFilterBottomEnd"
+            app:layout_constraintTop_toBottomOf="@id/tvCategory" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnSignUp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/bg_sign_up_btn"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:foreground="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/_10sdp"
+            android:text="Apply"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="@id/glFilterBottomEnd"
+            app:layout_constraintStart_toStartOf="@id/glFilterBottomStart"
+            app:layout_constraintTop_toBottomOf="@id/tvCategorySelected" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

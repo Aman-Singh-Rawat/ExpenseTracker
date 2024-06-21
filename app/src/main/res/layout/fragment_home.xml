@@ -41,7 +41,7 @@
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:background="@drawable/bg_profile_image"
                 android:padding="@dimen/_2sdp"
                 android:src="@drawable/img_dummy_profile"
@@ -157,6 +157,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/llExpense"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -301,10 +302,8 @@
             android:id="@+id/tvRecentTrans"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
             android:text="Recent Transaction"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_15ssp"
+            style="@style/daysText"
             android:layout_marginTop="@dimen/_24sdp"
             app:layout_constraintStart_toStartOf="@id/glFragHomeStart"
             app:layout_constraintTop_toBottomOf="@id/llTimeTags" />
@@ -327,20 +326,25 @@
             app:layout_constraintEnd_toEndOf="@+id/glFragHomeEnd"
             app:layout_constraintTop_toTopOf="@+id/tvRecentTrans" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvRecentTrans"
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="12dp"
-            android:layout_marginBottom="?attr/actionBarSize"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="@id/glFragHomeEnd"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/glFragHomeStart"
-            app:layout_constraintTop_toBottomOf="@id/tvSeeAll"
-            tools:listitem="@layout/recent_transacation_item" />
+            app:layout_constraintTop_toBottomOf="@id/tvSeeAll">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRecentTrans"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="?attr/actionBarSize"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/recent_transacation_item" />
+
+        </LinearLayout>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/glFragHomeStart"
