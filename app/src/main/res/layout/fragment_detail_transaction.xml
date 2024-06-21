@@ -202,7 +202,7 @@
             android:letterSpacing="0.01"
             android:text="Description"
             android:textColor="@color/light_20"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="@dimen/_13ssp"
             app:layout_constraintEnd_toEndOf="@id/glFragDetailEnd"
             app:layout_constraintStart_toStartOf="@id/glFragDetailStart"
             app:layout_constraintTop_toBottomOf="@+id/viewDash" />
@@ -229,7 +229,7 @@
             android:letterSpacing="0.01"
             android:text="Attachment"
             android:textColor="@color/light_20"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="@dimen/_13ssp"
             app:layout_constraintEnd_toEndOf="@id/glFragDetailEnd"
             app:layout_constraintStart_toStartOf="@id/glFragDetailStart"
             app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
