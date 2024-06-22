@@ -31,7 +31,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tvExpensesMoney"
+        android:layout_above="@+id/tvBudgetMoney"
         android:layout_alignStart="@+id/ivExpenseBackPressed"
         android:text="How much?"
         android:textColor="@color/light_80"
@@ -39,7 +39,7 @@
         android:fontFamily="@font/poppins_medium"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvExpensesMoney"
+        android:id="@+id/tvBudgetMoney"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/llExpenseCorners"
