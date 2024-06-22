@@ -25,7 +25,7 @@ open class BaseFragment: Fragment() {
                 it.setCancelable(false)
                 it.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 it.window?.setLayout(
-                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
                 )
                 it.show()
             }
