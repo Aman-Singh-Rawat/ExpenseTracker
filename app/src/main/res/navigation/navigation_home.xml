@@ -35,4 +35,9 @@
         android:name="com.internship.expensetracker.presenter.screen.fragment.detail.DetailTransaction"
         android:label="fragment_detail_transaction"
         tools:layout="@layout/fragment_detail_transaction" />
+    <dialog
+        android:id="@+id/removeTransactionBottomSheetFragment"
+        android:name="com.internship.expensetracker.presenter.screen.fragment.detail.RemoveTransactionBottomSheetFragment"
+        android:label="fragment_remove_transaction_bottom_sheet"
+        tools:layout="@layout/fragment_remove_transaction_bottom_sheet" />
 </navigation>

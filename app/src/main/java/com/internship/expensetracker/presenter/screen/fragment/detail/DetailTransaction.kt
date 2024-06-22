@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.internship.expensetracker.R
 import com.internship.expensetracker.databinding.FragmentDetailTransactionBinding
 import com.internship.expensetracker.presenter.screen.activity.HomeContainerActivity
@@ -25,5 +26,7 @@ class DetailTransaction : Fragment() {
         binding.icFragDetailArrow.setOnClickListener {
             (activity as HomeContainerActivity).onBackPressed()
         }
+
+        binding.imgTrash.setOnClickListener { findNavController().navigate(R.id.removeTransactionBottomSheetFragment) }
     }
 }

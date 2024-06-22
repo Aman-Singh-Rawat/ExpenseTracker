@@ -50,10 +50,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_back_arrow"
+                    app:tint="@color/white"
+                    android:clickable="true"
+                    android:focusable="true"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/imgTrash"
                     app:layout_constraintBottom_toBottomOf="@id/imgTrash"
-                    app:tint="@color/white" />
+                    android:foreground="?android:selectableItemBackground"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/fragmentTopTitle"
@@ -73,9 +76,12 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_trash"
+                    app:tint="@color/white"
+                    android:clickable="true"
+                    android:focusable="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/white" />
+                    android:foreground="?android:selectableItemBackground"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -202,7 +208,7 @@
             android:letterSpacing="0.01"
             android:text="Description"
             android:textColor="@color/light_20"
-            android:textSize="@dimen/_13ssp"
+            android:textSize="@dimen/_14ssp"
             app:layout_constraintEnd_toEndOf="@id/glFragDetailEnd"
             app:layout_constraintStart_toStartOf="@id/glFragDetailStart"
             app:layout_constraintTop_toBottomOf="@+id/viewDash" />
@@ -230,7 +236,7 @@
             android:letterSpacing="0.01"
             android:text="Attachment"
             android:textColor="@color/light_20"
-            android:textSize="@dimen/_13ssp"
+            android:textSize="@dimen/_14ssp"
             app:layout_constraintEnd_toEndOf="@id/glFragDetailEnd"
             app:layout_constraintStart_toStartOf="@id/glFragDetailStart"
             app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
