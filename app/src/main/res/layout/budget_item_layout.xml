@@ -33,6 +33,7 @@
                 android:backgroundTint="@color/violate" />
 
             <TextView
+                android:id="@+id/tvBudgetType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
@@ -45,8 +46,10 @@
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgWarning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:src="@drawable/ic_budget_item_warning"
             app:layout_constraintBottom_toBottomOf="@id/llBudgetType"
             app:layout_constraintEnd_toEndOf="parent"
@@ -93,6 +96,7 @@
             app:layout_constraintTop_toBottomOf="@id/budgetItemProgress" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvExceedLimit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
@@ -101,6 +105,7 @@
             android:text="You’ve exceed the limit!"
             android:textColor="@color/red"
             android:textSize="@dimen/_12ssp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvBudgetOutOf" />

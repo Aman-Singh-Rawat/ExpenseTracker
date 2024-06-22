@@ -7,10 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.internship.expensetracker.R
+import com.internship.expensetracker.data.models.BudgetItem
 import com.internship.expensetracker.databinding.FragmentBudgetBinding
+import com.internship.expensetracker.presenter.adapters.BudgetAdapter
 import com.internship.expensetracker.presenter.screen.activity.HomeContainerActivity
 
 class BudgetFragment : Fragment() {
+    private val budgetAdapter = BudgetAdapter()
     private lateinit var binding: FragmentBudgetBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,5 +26,24 @@ class BudgetFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         activity?.window?.statusBarColor = resources.getColor(R.color.violate, null)
         super.onViewCreated(view, savedInstanceState)
+
+        binding.rvBudget.adapter = budgetAdapter
+        budgetAdapter.updateUi(budgetList())
+    }
+
+    private fun budgetList(): MutableList<BudgetItem> {
+        return mutableListOf(
+            BudgetItem("Shopping", "Remaining $0",
+            1000, 1200),
+            BudgetItem("Transportation", "Remaining $0",
+                700, 350),
+            BudgetItem("Shopping", "Remaining $0",
+                1000, 1200),
+            BudgetItem("Transportation", "Remaining $0",
+                700, 350),
+            BudgetItem("Shopping", "Remaining $0",
+                1000, 1200),
+            BudgetItem("Transportation", "Remaining $0",
+                700, 350))
     }
 }
