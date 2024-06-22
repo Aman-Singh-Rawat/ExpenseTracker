@@ -51,30 +51,30 @@
                     android:layout_gravity="center"
                     android:src="@drawable/ic_back_arrow"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/imgTrash"
+                    app:layout_constraintBottom_toBottomOf="@id/imgTrash"
                     app:tint="@color/white" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/fragmentTopTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
                     android:gravity="center"
+                    android:layout_marginTop="@dimen/_2sdp"
                     android:text="Detail Transaction"
-                    app:layout_constraintBottom_toBottomOf="@id/icFragDetailArrow"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgTrash"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/icFragDetailArrow" />
+                    app:layout_constraintTop_toTopOf="@id/imgTrash" />
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgTrash"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_trash"
-                    app:layout_constraintBottom_toBottomOf="@id/icFragDetailArrow"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/icFragDetailArrow"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:tint="@color/white" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
