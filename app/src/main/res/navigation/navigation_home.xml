@@ -40,4 +40,9 @@
         android:name="com.internship.expensetracker.presenter.screen.fragment.detail.RemoveTransactionBottomSheetFragment"
         android:label="fragment_remove_transaction_bottom_sheet"
         tools:layout="@layout/fragment_remove_transaction_bottom_sheet" />
+    <fragment
+        android:id="@+id/navigation_budget"
+        android:name="com.internship.expensetracker.presenter.screen.fragment.budget.BudgetFragment"
+        android:label="fragment_budget"
+        tools:layout="@layout/fragment_budget" />
 </navigation>
