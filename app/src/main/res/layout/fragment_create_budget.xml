@@ -124,8 +124,11 @@
         <androidx.appcompat.widget.SwitchCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:thumb="@drawable/thumb_selector"
+            app:track="@drawable/track_selector"
+            android:checked="false"
+            android:layout_marginEnd="@dimen/_13sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginRight="@dimen/_12sdp"
             app:layout_constraintTop_toBottomOf="@id/tvReceiveAlert"
             app:layout_constraintBottom_toTopOf="@+id/tvReceiveAlertDesc"/>
 

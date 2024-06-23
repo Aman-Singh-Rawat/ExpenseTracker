@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.internship.expensetracker.R
 import com.internship.expensetracker.data.models.BudgetItem
 import com.internship.expensetracker.databinding.FragmentBudgetBinding
@@ -26,7 +27,7 @@ class BudgetFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         activity?.window?.statusBarColor = resources.getColor(R.color.violate, null)
         super.onViewCreated(view, savedInstanceState)
-
+        binding.btnEdit.setOnClickListener { findNavController().navigate(R.id.createBudgetFragment) }
         binding.rvBudget.adapter = budgetAdapter
         budgetAdapter.updateUi(budgetList())
     }
