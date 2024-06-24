@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".presenter.screen.fragment.budget.DetailBudgetFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glDetailBudgetStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glDetailBudgetEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/icFragDetailArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:tint="@color/dark_100"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:foreground="?android:selectableItemBackground"
+            android:src="@drawable/ic_back_arrow"
+            app:layout_constraintBottom_toBottomOf="@id/imgTrash"
+            app:layout_constraintStart_toStartOf="@id/glDetailBudgetStart"
+            app:layout_constraintTop_toTopOf="@id/imgTrash"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/fragmentTopTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:gravity="center"
+            android:textColor="@color/dark_100"
+            android:text="Detail Budget"
+            android:fontFamily="@font/inter_bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imgTrash"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imgTrash" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgTrash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:foreground="?android:selectableItemBackground"
+            android:src="@drawable/ic_trash"
+            app:layout_constraintEnd_toEndOf="@id/glDetailBudgetEnd"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/dark_100" />
+
+        <LinearLayout
+            android:id="@+id/llDetailBudgetType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/_12sdp"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_14sdp"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_detail_budget_type"
+            app:layout_constraintTop_toBottomOf="@id/imgTrash"
+            app:layout_constraintEnd_toEndOf="@id/glDetailBudgetEnd"
+            app:layout_constraintStart_toStartOf="@id/glDetailBudgetStart">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvTranImage"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                app:cardCornerRadius="@dimen/_6sdp"
+                android:elevation="0dp"
+                app:cardElevation="0dp"
+                android:layout_gravity="center_vertical"
+                app:cardBackgroundColor="@color/yellow_20"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgTranImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    android:padding="@dimen/_3sdp"
+                    android:src="@drawable/ic_yellow_trash"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shopping"
+                android:textColor="@color/dark_100"
+                android:textSize="@dimen/_14ssp"
+                android:letterSpacing="0.01"
+                android:layout_gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/poppins_semibold"/>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRemaining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_bold"
+            android:letterSpacing="0.02"
+            android:text="Remainining"
+            android:textColor="@color/dark_100"
+            android:textSize="@dimen/_19ssp"
+            android:layout_marginTop="@dimen/_25sdp"
+            app:layout_constraintTop_toBottomOf="@id/llDetailBudgetType"
+            app:layout_constraintEnd_toEndOf="@id/glDetailBudgetEnd"
+            app:layout_constraintStart_toStartOf="@id/glDetailBudgetStart"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvBudgetMoney"
+            style="@style/tvMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$0"
+            android:textColor="@color/dark_100"
+            android:includeFontPadding="false"
+            app:layout_constraintTop_toBottomOf="@id/tvRemaining"
+            app:layout_constraintEnd_toEndOf="@id/glDetailBudgetEnd"
+            app:layout_constraintStart_toStartOf="@id/glDetailBudgetStart" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/budgetItemProgress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:indeterminate="false"
+            android:indeterminateTint="@color/yellow_100"
+            android:max="100"
+            android:progress="50"
+            app:trackCornerRadius="20dp"
+            app:trackThickness="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@id/tvBudgetMoney"
+            app:layout_constraintEnd_toEndOf="@id/glDetailBudgetEnd"
+            app:layout_constraintStart_toStartOf="@id/glDetailBudgetStart"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_24sdp"
+            app:cardBackgroundColor="@color/red"
+            app:layout_constraintTop_toBottomOf="@+id/budgetItemProgress"
+            app:layout_constraintEnd_toEndOf="@id/glDetailBudgetEnd"
+            app:layout_constraintStart_toStartOf="@id/glDetailBudgetStart">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_12sdp"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:paddingVertical="@dimen/_5sdp"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:drawablePadding="@dimen/_8sdp"
+                android:fontFamily="@font/inter_medium"
+                android:text="You’ve exceed the limit"
+                android:drawableStart="@drawable/ic_white_warning"/>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:background="@drawable/bg_sign_up_btn"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:foreground="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/_10sdp"
+            android:text="Edit"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:layout_goneMarginTop="@dimen/_22sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>

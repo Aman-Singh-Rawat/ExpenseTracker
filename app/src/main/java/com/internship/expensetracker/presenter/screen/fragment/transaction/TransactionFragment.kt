@@ -41,7 +41,7 @@ class TransactionFragment : Fragment() {
 
     private fun transList(): List<RecentTransItem> {
         return listOf(
-            RecentTransItem(R.drawable.ic_shopping_bag, "Shopping",
+            RecentTransItem(R.drawable.ic_yellow_trash, "Shopping",
             "Buy Some grocery", 120, "10:00 AM"),
             RecentTransItem(R.drawable.ic_subscription, "Subscription",
                 "Disney+ Annual", 80, "03:30 PM"),

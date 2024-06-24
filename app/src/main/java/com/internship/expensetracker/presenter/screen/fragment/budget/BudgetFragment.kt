@@ -27,6 +27,8 @@ class BudgetFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         activity?.window?.statusBarColor = resources.getColor(R.color.violate, null)
         super.onViewCreated(view, savedInstanceState)
+
+        binding.tvMonth.setOnClickListener { findNavController().navigate(R.id.detailBudgetFragment) }
         binding.fabCreateBtn.setOnClickListener { findNavController().navigate(R.id.createBudgetFragment) }
         binding.rvBudget.adapter = budgetAdapter
         budgetAdapter.updateUi(budgetList())

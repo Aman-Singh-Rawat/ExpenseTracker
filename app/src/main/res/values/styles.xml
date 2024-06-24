@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    
+    <style name="Widget.App.Tooltip" parent="Widget.MaterialComponents.Tooltip">
+        <item name="backgroundTint">@color/violate</item>
+    </style>
+
+    <style name="Widget.App.Slider" parent="Widget.MaterialComponents.Slider">
+        <item name="labelStyle">@style/Widget.App.Tooltip</item>
+    </style>
+    
     <style name="daysText" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">@dimen/_15ssp</item>
         <item name="android:textColor">@color/black</item>

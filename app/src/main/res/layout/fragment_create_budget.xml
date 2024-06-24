@@ -23,7 +23,7 @@
         app:layout_constraintGuide_begin="20dp" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/icCreateBudgetBack"
+        android:id="@+id/imgCreateBudgetBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -45,8 +45,8 @@
         android:text="Create Budget"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/icCreateBudgetBack"
-        app:layout_constraintBottom_toBottomOf="@+id/icCreateBudgetBack" />
+        app:layout_constraintTop_toTopOf="@id/imgCreateBudgetBack"
+        app:layout_constraintBottom_toBottomOf="@+id/imgCreateBudgetBack" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
@@ -122,6 +122,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvReceiveAlert" />
 
         <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/createBudgetSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:thumb="@drawable/thumb_selector"
@@ -133,14 +134,16 @@
             app:layout_constraintBottom_toTopOf="@+id/tvReceiveAlertDesc"/>
 
         <com.google.android.material.slider.Slider
-            android:id="@+id/seekbar"
+            android:id="@+id/createBudgetSlider"
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="20dp"
             android:valueFrom="0"
             android:valueTo="100"
             app:trackHeight="5dp"
+            android:visibility="gone"
+            style="@style/Widget.App.Slider"
+            android:layout_marginTop="@dimen/_12sdp"
             app:layout_constraintTop_toBottomOf="@+id/tvReceiveAlertDesc"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -161,9 +164,12 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/_14ssp"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:layout_goneMarginTop="@dimen/_22sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/createBudgetSlider"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

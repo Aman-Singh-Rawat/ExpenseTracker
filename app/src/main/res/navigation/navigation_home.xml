@@ -50,4 +50,9 @@
         android:name="com.internship.expensetracker.presenter.screen.fragment.budget.CreateBudgetFragment"
         android:label="fragment_create_budget"
         tools:layout="@layout/fragment_create_budget" />
+    <fragment
+        android:id="@+id/detailBudgetFragment"
+        android:name="com.internship.expensetracker.presenter.screen.fragment.budget.DetailBudgetFragment"
+        android:label="fragment_detail_budget"
+        tools:layout="@layout/fragment_detail_budget" />
 </navigation>
