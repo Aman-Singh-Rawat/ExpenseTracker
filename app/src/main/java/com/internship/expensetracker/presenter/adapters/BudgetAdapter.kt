@@ -37,8 +37,8 @@ class BudgetAdapter: RecyclerView.Adapter<BudgetAdapter.BudgetViewHolder>() {
                 imgWarning.visibility = View.VISIBLE
                 tvRemaining.text = "Remaining $0"
             } else {
-                tvExceedLimit.visibility = View.INVISIBLE
-                imgWarning.visibility = View.INVISIBLE
+                tvExceedLimit.visibility = View.GONE
+                imgWarning.visibility = View.GONE
 
                 tvRemaining.text = "Remaining ${budgetList[position].budgetAchieve}"
             }
