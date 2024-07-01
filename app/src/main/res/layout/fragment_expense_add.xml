@@ -73,7 +73,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etEmail"
+                android:id="@+id/etDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Description"
@@ -100,7 +100,8 @@
             android:layout_width="@dimen/_105sdp"
             android:layout_height="@dimen/_100sdp"
             android:layout_marginTop="@dimen/_16sdp"
-            android:visibility="gone">
+            android:visibility="gone"
+            tools:visibility="visible">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -111,6 +112,7 @@
                 app:cardBackgroundColor="@color/violate_light">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgUserExpense"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
@@ -140,6 +142,7 @@
             android:layout_marginTop="@dimen/_16sdp"
             android:clickable="true"
             android:focusable="true"
+            tools:visibility="gone"
             android:foreground="?android:selectableItemBackground"
             android:background="@drawable/bg_add_expense_attachment">
 
