@@ -1,6 +1,7 @@
 package com.internship.expensetracker.presenter.screen.fragment.transaction
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,17 +9,27 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.internship.expensetracker.R
 import com.internship.expensetracker.data.models.RecentTransItem
+import com.internship.expensetracker.databinding.ActivityHomeContainerBinding
 import com.internship.expensetracker.databinding.FragmentTransactionBinding
 import com.internship.expensetracker.presenter.adapters.RecentTransAdapter
+import com.internship.expensetracker.presenter.screen.activity.HomeContainerActivity
 
-class TransactionFragment : Fragment() {
+class TransactionFragment : Fragment(), HomeContainerActivity.FabCallback {
     private val recentTransAdapter = RecentTransAdapter()
     private lateinit var binding: FragmentTransactionBinding
+    private var activityBinding: ActivityHomeContainerBinding? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTransactionBinding.inflate(inflater, container, false)
+
+        activityBinding?.let {
+            it.bottomAppBar.visibility = View.VISIBLE
+            it.mainFab.show()
+        }
+
         return binding.root
     }
 
@@ -48,5 +59,28 @@ class TransactionFragment : Fragment() {
             RecentTransItem(R.drawable.ic_food, "Food", "Buy a ramen",
                 32, "07:30 PM")
         )
+    }
+
+    fun setActivityBinding(binding: ActivityHomeContainerBinding) {
+        activityBinding = binding
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        activityBinding?.let {
+            it.bottomAppBar.visibility = View.GONE
+            it.mainFab.hide()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        activityBinding = null
+    }
+
+    override fun onFabClicked() {
+        TODO("Not yet implemented")
     }
 }

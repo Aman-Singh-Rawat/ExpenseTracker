@@ -31,21 +31,39 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tvBudgetMoney"
+        android:layout_above="@+id/tilBudget"
         android:layout_alignStart="@+id/ivExpenseBackPressed"
         android:text="How much?"
         android:textColor="@color/light_80"
         android:textSize="@dimen/_14ssp"
         android:fontFamily="@font/poppins_medium"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvBudgetMoney"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilBudget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:hintEnabled="false"
+        app:boxStrokeColor="@null"
+        app:boxStrokeWidth="0dp"
         android:layout_above="@+id/llExpenseCorners"
         android:layout_alignStart="@+id/ivExpenseBackPressed"
-        android:text="$0"
-        style="@style/tvMoney"/>
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBudgetMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/tvMoney"
+            android:hint="$0"
+            android:maxEms="5"
+            android:ellipsize="end"
+            android:textColorHint="@color/white"
+            android:inputType="numberDecimal"
+            android:includeFontPadding="false"
+            android:textCursorDrawable="@drawable/fragment_expense_add_cursor"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <LinearLayout
         android:id="@+id/llExpenseCorners"
@@ -123,6 +141,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgClearImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"

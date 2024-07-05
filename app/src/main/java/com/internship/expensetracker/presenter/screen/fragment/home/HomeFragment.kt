@@ -1,17 +1,19 @@
 package com.internship.expensetracker.presenter.screen.fragment.home
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.internship.expensetracker.R
 import com.internship.expensetracker.core.BaseFragment
 import com.internship.expensetracker.data.models.RecentTransItem
+import com.internship.expensetracker.databinding.ActivityHomeContainerBinding
 import com.internship.expensetracker.databinding.FragmentHomeBinding
 import com.internship.expensetracker.presenter.adapters.RecentTransAdapter
 import com.internship.expensetracker.presenter.screen.activity.HomeContainerActivity
@@ -20,12 +22,18 @@ class HomeFragment : BaseFragment(), HomeContainerActivity.FabCallback {
     private var isSelectedTime: String = "Today"
     private lateinit var binding: FragmentHomeBinding
     private val recentTransAdapter = RecentTransAdapter()
+    private var activityBinding: ActivityHomeContainerBinding? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        activityBinding?.let {
+            it.bottomAppBar.visibility = View.GONE
+            it.mainFab.hide()
+        }
         return binding.root
     }
 
@@ -108,4 +116,35 @@ class HomeFragment : BaseFragment(), HomeContainerActivity.FabCallback {
         findNavController().navigate(R.id.expenseAddFragment)
     }
 
+    fun setActivityBinding(binding: ActivityHomeContainerBinding) {
+        activityBinding = binding
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        activityBinding?.let {
+            it.bottomAppBar.visibility = View.VISIBLE
+            it.mainFab.show()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        activityBinding?.let {
+            it.bottomAppBar.visibility = View.GONE
+            it.mainFab.hide()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        activityBinding = null
+    }
+
+
+    //TODO gone all in onPause() method
+    //TODO visible all in onCreateView() method and onResume() method
 }

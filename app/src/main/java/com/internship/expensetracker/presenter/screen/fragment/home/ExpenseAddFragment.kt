@@ -39,6 +39,10 @@ class ExpenseAddFragment : Fragment() {
             (activity as HomeContainerActivity).onBackPressed()
         }
 
+        binding.imgClearImage.setOnClickListener {
+            clearImage()
+        }
+
         binding.btnSignUp.setOnClickListener {
             val category = binding.spinnerCategory.selectedItem.toString()
             val description = binding.etDescription.text.toString()
@@ -70,6 +74,12 @@ class ExpenseAddFragment : Fragment() {
 //                Log.d("debugging", result)
 //            }
 //        }
+    }
+
+    private fun clearImage() {
+        binding.imgUserExpense.setImageURI(null)
+        binding.rlExpenseFile.visibility = View.GONE
+        binding.llAddAttachment.visibility = View.VISIBLE
     }
 
     private fun imageSetOrNot(it: UserAddExpense) {

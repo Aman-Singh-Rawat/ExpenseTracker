@@ -1,39 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presenter.screen.activity.HomeContainerActivity">
-
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerHome"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/navigation_home"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled"
-        app:elevation="@dimen/_10sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-<!--
-    <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -42,43 +7,105 @@
     android:layout_height="match_parent"
     tools:context=".presenter.screen.activity.HomeContainerActivity">
 
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerHome"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        android:layout_marginBottom="?attr/actionBarSize"
-        app:navGraph="@navigation/navigation_home"
-        android:name="androidx.navigation.fragment.NavHostFragment"/>
+        android:layout_height="match_parent">
+
+        <fragment
+            android:id="@+id/fragmentContainerHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/navigation_home"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/dummyFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:focusable="false"
+            android:visibility="invisible"
+            android:layout_marginBottom="?attr/actionBarSize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabIncome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:maxImageSize="@dimen/_35sdp"
+            app:tint="@color/white"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:fabCustomSize="@dimen/_55sdp"
+            android:src="@drawable/ic_half_income"
+            android:backgroundTint="@color/green"
+            app:layout_constraintBottom_toTopOf="@id/dummyFab"
+            app:layout_constraintEnd_toStartOf="@id/dummyFab"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabExpense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:maxImageSize="@dimen/_35sdp"
+            app:tint="@color/white"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:fabCustomSize="@dimen/_55sdp"
+            android:src="@drawable/ic_half_expense"
+            android:backgroundTint="@color/red"
+            android:layout_marginTop="@dimen/_4sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/fabIncome"
+            app:layout_constraintStart_toEndOf="@id/dummyFab"
+            app:layout_constraintTop_toTopOf="@+id/fabIncome" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        app:fabAlignmentMode="center"
         android:backgroundTint="@color/white"
-        app:fabCradleRoundedCornerRadius="10dp"
-        app:fabCradleVerticalOffset="10dp">
+        app:fabCradleRoundedCornerRadius="20dp"
+        app:fabCradleMargin="10dp"
+        app:hideOnScroll="true"
+        app:fabCradleVerticalOffset="10dp"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="wrap_content"
             android:id="@+id/bottomNavView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             app:menu="@menu/bottom_nav_menu"
+            android:layout_height="wrap_content"
             android:background="@drawable/transparent"
-            app:labelVisibilityMode="labeled"/>
+            app:labelVisibilityMode="labeled">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/mainFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="fabButton"
         android:src="@drawable/ic_add"
         app:tint="@color/white"
-        app:layout_anchor="@id/bottomAppBar"
-        app:fabCustomSize="@dimen/_50sdp"/>
+        app:fabCustomSize="@dimen/_50sdp"
+        app:maxImageSize="@dimen/_25sdp"
+        app:layout_constraintStart_toStartOf="@id/bottomAppBar"
+        app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
+        app:layout_constraintEnd_toEndOf="@id/bottomAppBar"
+        app:layout_anchor="@id/bottomAppBar">
 
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
--->
