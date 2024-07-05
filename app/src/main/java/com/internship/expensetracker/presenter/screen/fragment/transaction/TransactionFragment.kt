@@ -14,22 +14,15 @@ import com.internship.expensetracker.databinding.FragmentTransactionBinding
 import com.internship.expensetracker.presenter.adapters.RecentTransAdapter
 import com.internship.expensetracker.presenter.screen.activity.HomeContainerActivity
 
-class TransactionFragment : Fragment(), HomeContainerActivity.FabCallback {
+class TransactionFragment : Fragment() {
     private val recentTransAdapter = RecentTransAdapter()
     private lateinit var binding: FragmentTransactionBinding
-    private var activityBinding: ActivityHomeContainerBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTransactionBinding.inflate(inflater, container, false)
-
-        activityBinding?.let {
-            it.bottomAppBar.visibility = View.VISIBLE
-            it.mainFab.show()
-        }
-
         return binding.root
     }
 
@@ -59,28 +52,5 @@ class TransactionFragment : Fragment(), HomeContainerActivity.FabCallback {
             RecentTransItem(R.drawable.ic_food, "Food", "Buy a ramen",
                 32, "07:30 PM")
         )
-    }
-
-    fun setActivityBinding(binding: ActivityHomeContainerBinding) {
-        activityBinding = binding
-    }
-
-    override fun onPause() {
-        super.onPause()
-
-        activityBinding?.let {
-            it.bottomAppBar.visibility = View.GONE
-            it.mainFab.hide()
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-        activityBinding = null
-    }
-
-    override fun onFabClicked() {
-        TODO("Not yet implemented")
     }
 }

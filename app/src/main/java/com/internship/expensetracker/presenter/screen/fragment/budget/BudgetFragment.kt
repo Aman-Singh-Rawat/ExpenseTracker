@@ -12,24 +12,16 @@ import com.internship.expensetracker.data.models.BudgetItem
 import com.internship.expensetracker.databinding.ActivityHomeContainerBinding
 import com.internship.expensetracker.databinding.FragmentBudgetBinding
 import com.internship.expensetracker.presenter.adapters.BudgetAdapter
-import com.internship.expensetracker.presenter.screen.activity.HomeContainerActivity
 
 class BudgetFragment : Fragment() {
     private val budgetAdapter = BudgetAdapter()
     private lateinit var binding: FragmentBudgetBinding
-    private var activityBinding: ActivityHomeContainerBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentBudgetBinding.inflate(inflater, container, false)
-
-        activityBinding?.let {
-            it.bottomAppBar.visibility = View.VISIBLE
-            it.mainFab.show()
-        }
-
         return binding.root
     }
 
@@ -57,24 +49,5 @@ class BudgetFragment : Fragment() {
                 1000, 1200),
             BudgetItem("Transportation", "Remaining $0",
                 700, 350))
-    }
-
-    fun setActivityBinding(binding: ActivityHomeContainerBinding) {
-        activityBinding = binding
-    }
-
-    override fun onPause() {
-        super.onPause()
-
-        activityBinding?.let {
-            it.bottomAppBar.visibility = View.GONE
-            it.mainFab.hide()
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-        activityBinding = null
     }
 }
