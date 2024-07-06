@@ -55,4 +55,9 @@
         android:name="com.internship.expensetracker.presenter.screen.fragment.budget.DetailBudgetFragment"
         android:label="fragment_detail_budget"
         tools:layout="@layout/fragment_detail_budget" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.internship.expensetracker.presenter.screen.fragment.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

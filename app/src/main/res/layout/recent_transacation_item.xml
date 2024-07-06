@@ -9,8 +9,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cvTranImage"
         android:layout_width="@dimen/_46sdp"
-        android:layout_height="@dimen/_48sdp"
-        app:cardCornerRadius="@dimen/_10sdp"
+        android:layout_height="@dimen/_46sdp"
+        app:cardCornerRadius="@dimen/_13sdp"
         android:elevation="0dp"
         app:cardElevation="0dp"
         app:cardBackgroundColor="@color/yellow_20"

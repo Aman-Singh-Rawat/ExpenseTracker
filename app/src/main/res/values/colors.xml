@@ -26,8 +26,10 @@
     <color name="light_80">#FCFCFC</color>
     <color name="very_light_20">#e9ecef</color>
     <color name="red_40">#FDA2A9</color>
+    <color name="red_20">#FDD5D7</color>
 
     <color name="dark_100">#0D0E0F</color>
+    <color name="dark_75">#161719</color>
     <color name="dark_50">#212325</color>
     <color name="dark_25">#292B2D</color>
 </resources>
