@@ -10,19 +10,33 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.internship.expensetracker.R
+import com.internship.expensetracker.core.BaseFragment
+import com.internship.expensetracker.data.models.Transaction
 import com.internship.expensetracker.data.models.UserAddExpense
 import com.internship.expensetracker.databinding.FragmentExpenseAddBinding
 import com.internship.expensetracker.presenter.adapters.CustomSpinnerAdapter
+import com.internship.expensetracker.presenter.database.TransactionDatabase
+import com.internship.expensetracker.presenter.repository.ExpenseRepository
 import com.internship.expensetracker.presenter.screen.activity.HomeContainerActivity
 import com.internship.expensetracker.presenter.viewmodel.ExpenseAddViewModel
+import com.internship.expensetracker.presenter.viewmodel.TransactionViewModel
+import com.internship.expensetracker.presenter.viewmodel.TransactionViewModelFactory
 import com.internship.expensetracker.util.base64ToBitmap
+import java.util.Date
 
-class ExpenseAddFragment : Fragment() {
+class ExpenseAddFragment : BaseFragment() {
     private lateinit var binding: FragmentExpenseAddBinding
-    private val expenseViewModel: ExpenseAddViewModel by activityViewModels()
+    private val transactionViewModel: TransactionViewModel by viewModels {
+        TransactionViewModelFactory(ExpenseRepository(
+            TransactionDatabase.getDatabaseInstance(requireActivity().applicationContext).transactionDao()
+        ))
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,24 +58,17 @@ class ExpenseAddFragment : Fragment() {
         }
 
         binding.btnSignUp.setOnClickListener {
-            val category = binding.spinnerCategory.selectedItem.toString()
-            val description = binding.etDescription.text.toString()
-            val wallet = binding.spinnerWallet.selectedItem.toString()
-
-            expenseViewModel.addAllExpenseData(category, description, wallet)
+            sendUserData()
         }
-
-        expenseViewModel.expenseLiveData.observe(requireActivity(), Observer {
-            imageSetOrNot(it)
-        })
 
         val spinnerItems = listOf("Aman", "Rajveer", "Tanuj", "Vipul")
         val adapter = CustomSpinnerAdapter(requireContext(), spinnerItems)
         binding.spinnerCategory.adapter = adapter
         binding.spinnerWallet.adapter = adapter
 
-        binding.llAddAttachment.setOnClickListener { findNavController()
-            .navigate(R.id.expenseAddBottomSheetFragment)
+        binding.llAddAttachment.setOnClickListener {
+            findNavController()
+                .navigate(R.id.expenseAddBottomSheetFragment)
         }
 //        parentFragmentManager.setFragmentResultListener("dataFromSecond",
 //            viewLifecycleOwner) {_, bundle ->
@@ -74,6 +81,22 @@ class ExpenseAddFragment : Fragment() {
 //                Log.d("debugging", result)
 //            }
 //        }
+    }
+
+    private fun sendUserData() {
+        val balance = binding.etBudgetMoney.text.toString()
+        val category = binding.spinnerCategory.selectedItem.toString()
+        val description = binding.etDescription.text.toString()
+        val wallet = binding.spinnerWallet.selectedItem.toString()
+
+        transactionViewModel.insertTransaction(
+            Transaction(
+                0, balance, category, description,
+                wallet, "", ""
+            )
+        )
+
+        findNavController().navigateUp()
     }
 
     private fun clearImage() {
@@ -92,11 +115,5 @@ class ExpenseAddFragment : Fragment() {
             binding.imgUserExpense.setImageURI(null)
             binding.llAddAttachment.visibility = View.VISIBLE
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-
-        expenseViewModel.destroyExpense()
     }
 }

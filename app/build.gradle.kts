@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -73,5 +74,16 @@ dependencies {
 
     //circular image
     implementation("de.hdodenhof:circleimageview:3.1.0")
+
+    // room plugin
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+
+    //Ksp Plugin
+    ksp("androidx.room:room-compiler:2.6.1")
+
+    //View Model
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3")
+
 
 }

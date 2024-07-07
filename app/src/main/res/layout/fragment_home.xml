@@ -326,25 +326,18 @@
             app:layout_constraintEnd_toEndOf="@+id/glFragHomeEnd"
             app:layout_constraintTop_toTopOf="@+id/tvRecentTrans" />
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRecentTrans"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="?attr/actionBarSize"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/recent_transacation_item"
             android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="@id/glFragHomeEnd"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/glFragHomeStart"
-            app:layout_constraintTop_toBottomOf="@id/tvSeeAll">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvRecentTrans"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="?attr/actionBarSize"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/recent_transacation_item" />
-
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@id/tvSeeAll" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/glFragHomeStart"

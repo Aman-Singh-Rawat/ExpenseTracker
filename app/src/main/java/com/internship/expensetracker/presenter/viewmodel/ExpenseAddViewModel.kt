@@ -5,8 +5,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.internship.expensetracker.data.models.UserAddExpense
+import com.internship.expensetracker.presenter.repository.ExpenseRepository
 
-class ExpenseAddViewModel(application: Application): AndroidViewModel(application) {
+class ExpenseAddViewModel(repository: ExpenseRepository, application: Application): AndroidViewModel(application) {
     private var _expenseLiveData = MutableLiveData<UserAddExpense>()
     val expenseLiveData: LiveData<UserAddExpense>
         get() = _expenseLiveData

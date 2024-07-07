@@ -40,7 +40,7 @@ class TransactionFragment : Fragment() {
     private fun applyRecentRecycler() {
         binding.rvTodayTrans.adapter = recentTransAdapter
         binding.rvYesterdayTrans.adapter = recentTransAdapter
-        recentTransAdapter.updateUi(recentList = transList())
+        //recentTransAdapter.updateUi(recentList = transList())
     }
 
     private fun transList(): List<RecentTransItem> {
