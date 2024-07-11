@@ -18,6 +18,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -27,7 +28,6 @@ import com.internship.expensetracker.databinding.ExpenseAddBottomSheetFragmentBi
 import com.internship.expensetracker.presenter.viewmodel.ExpenseAddViewModel
 
 class ExpenseAddBottomSheetFragment : BottomSheetDialogFragment() {
-    private val viewModel: ExpenseAddViewModel by activityViewModels()
     private var uri: Uri? = null
     private lateinit var binding: ExpenseAddBottomSheetFragmentBinding
     private val requestCameraPermissionLauncher = registerForActivityResult(
@@ -104,8 +104,8 @@ class ExpenseAddBottomSheetFragment : BottomSheetDialogFragment() {
     private val newPhotoPiker = registerForActivityResult(
         ActivityResultContracts.GetContent()) { uri ->
         if (uri != null) {
-            Log.d("debugging", "image Uri is:: $uri")
-            viewModel.addUserImage(uri.toString())
+            parentFragmentManager.setFragmentResult("dataFromSecond", bundleOf("data" to uri.toString()))
+            //viewModel.addUserImage(uri.toString())
             dismiss()
         }
     }

@@ -2,6 +2,7 @@ package com.internship.expensetracker.data.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.Date
 
 @Entity(tableName = "transaction")
 data class Transaction (
@@ -12,6 +13,6 @@ data class Transaction (
     val description: String = "",
     val wallet: String = "",
     val attachmentImage: String = "",
-    val transactionTime: String = "",
+    val transactionTime: Date = Date(),
     val transactionType: String = ""
 )

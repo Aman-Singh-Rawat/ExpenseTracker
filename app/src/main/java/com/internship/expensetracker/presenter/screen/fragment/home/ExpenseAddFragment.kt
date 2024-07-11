@@ -88,17 +88,17 @@ class ExpenseAddFragment : BaseFragment() {
             findNavController()
                 .navigate(R.id.expenseAddBottomSheetFragment)
         }
-        //        parentFragmentManager.setFragmentResultListener("dataFromSecond",
-        //            viewLifecycleOwner) {_, bundle ->
-        //
-        //            val result = bundle.getString("data")
-        //            result?.let {
-        //                binding.rlExpenseFile.visibility = View.VISIBLE
-        //                binding.imgUserExpense.setImageBitmap(base64ToBitmap(result))
-        //                binding.llAddAttachment.visibility = View.GONE
-        //                Log.d("debugging", result)
-        //            }
-        //        }
+                parentFragmentManager.setFragmentResultListener("dataFromSecond",
+                    viewLifecycleOwner) {_, bundle ->
+
+                    val result = bundle.getString("data")
+                    result?.let {
+                        binding.rlExpenseFile.visibility = View.VISIBLE
+                        binding.imgUserExpense.setImageURI(result.toUri())
+                        binding.llAddAttachment.visibility = View.GONE
+                        Log.d("debugging", result)
+                    }
+                }
     }
 
     private fun sendUserData() {
@@ -106,6 +106,8 @@ class ExpenseAddFragment : BaseFragment() {
         val category = binding.spinnerCategory.text.toString()
         val description = binding.etDescription.text.toString()
         val wallet = binding.spinnerWallet.text.toString()
+
+        val string: String = Date().time.toString()
 
         Log.d("debugging", category)
         if (isDetailsFill(balance, category, description, wallet)) {

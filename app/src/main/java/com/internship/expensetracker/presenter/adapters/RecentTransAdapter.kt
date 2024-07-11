@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.internship.expensetracker.data.models.RecentTransItem
 import com.internship.expensetracker.data.models.Transaction
 import com.internship.expensetracker.databinding.RecentTransacationItemBinding
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 class RecentTransAdapter: RecyclerView.Adapter<RecentTransAdapter.RecentTransViewHolder>() {
     var recentList: List<Transaction> = emptyList()
@@ -29,6 +32,9 @@ class RecentTransAdapter: RecyclerView.Adapter<RecentTransAdapter.RecentTransVie
             tvTranType.text = recentList[position].category
             tvTranTypeMoney.text = recentList[position].transactionMoney.toString()
             tvTranDescription.text = recentList[position].description
+
+            val timeFormat = SimpleDateFormat("HH:mm a", Locale.getDefault())
+            tvTranTime.text = timeFormat.format(recentList[position].transactionTime)
             //tvTranTime.text = recentList[position].transactionTime.time.to
         }
     }
