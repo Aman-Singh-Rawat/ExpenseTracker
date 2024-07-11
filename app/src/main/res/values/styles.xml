@@ -55,4 +55,10 @@
         <item name="android:textColor">@color/dark_100</item>
         <item name="android:fontFamily">@font/inter_bold</item>
     </style>
+
+    <style name="dummy" parent="Widget.MaterialComponents.LinearProgressIndicator">
+        <item name="trackCornerRadius">@dimen/_20sdp</item>
+        <item name="trackThickness">@dimen/_12sdp</item>
+        <item name="android:max">100</item>
+    </style>
 </resources>

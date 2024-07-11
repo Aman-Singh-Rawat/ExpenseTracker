@@ -2,6 +2,7 @@ package com.internship.expensetracker.presenter.screen.fragment.budget
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.ContextThemeWrapper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +22,9 @@ class BudgetFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentBudgetBinding.inflate(inflater, container, false)
+        val contextThemeWrapper = ContextThemeWrapper(activity, R.style.BudgetTheme)
+        val localInflater = inflater.cloneInContext(contextThemeWrapper)
+        binding = FragmentBudgetBinding.inflate(localInflater, container, false)
         return binding.root
     }
 

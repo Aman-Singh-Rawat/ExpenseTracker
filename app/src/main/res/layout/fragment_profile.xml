@@ -59,7 +59,7 @@
         app:layout_constraintStart_toStartOf="@+id/tvUserNameText"
         app:layout_constraintTop_toBottomOf="@+id/tvUserNameText" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_profile_edit"
@@ -69,14 +69,13 @@
         app:layout_constraintTop_toTopOf="@+id/tvUserNameText" />
 
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/_20sdp"
-        android:elevation="0dp"
-        app:cardElevation="0dp"
-        android:background="@color/light_80"
-        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_32sdp"
+        app:cardBackgroundColor="@color/cardview_light_background"
+        style="@style/Widget.Material3.CardView.Filled"
         app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
         app:layout_constraintStart_toStartOf="@id/glProfileStart"
         app:layout_constraintTop_toBottomOf="@+id/imgHomeProfile">
@@ -90,7 +89,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:layout_margin="@dimen/_10sdp">
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_10sdp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cvWalletAccount"
@@ -126,8 +128,9 @@
 
             <View
                 android:layout_width="match_parent"
+                android:layout_height="1dp"
                 android:layout_marginTop="@dimen/_3sdp"
-                android:background="@color/light_80" />
+                android:background="@color/light_60" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -169,8 +172,9 @@
 
             <View
                 android:layout_width="match_parent"
+                android:layout_height="1dp"
                 android:layout_marginTop="@dimen/_3sdp"
-                android:background="@color/light_80" />
+                android:background="@color/light_60" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -212,14 +216,18 @@
 
             <View
                 android:layout_width="match_parent"
+                android:layout_height="1dp"
                 android:layout_marginTop="@dimen/_3sdp"
-                android:background="@color/light_80" />
+                android:background="@color/light_60" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:layout_margin="@dimen/_10sdp">
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_15sdp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cvProfileLogout"
@@ -255,6 +263,6 @@
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

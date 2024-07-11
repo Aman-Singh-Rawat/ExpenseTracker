@@ -52,7 +52,8 @@ class FabManager(private val context: Context, private val binding: ActivityHome
         binding.fabIncome.startAnimation(fromBottom)
         binding.fabExpense.startAnimation(fromBottom)
         binding.mainFab.startAnimation(rotateOpen)
-
+        binding.bottomAppBar.fabCradleMargin = 20f
+        binding.bottomAppBar.fabCradleRoundedCornerRadius = 20f
         binding.overlay.visibility = View.VISIBLE
     }
 
@@ -64,6 +65,7 @@ class FabManager(private val context: Context, private val binding: ActivityHome
         binding.fabExpense.isFocusable = false
         binding.fabIncome.isClickable = false
         binding.fabIncome.isFocusable = false
+        binding.bottomAppBar.fabCradleMargin = 0f
 
         binding.fabIncome.startAnimation(toBottom)
         binding.fabExpense.startAnimation(toBottom)

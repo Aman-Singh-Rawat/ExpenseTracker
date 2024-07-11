@@ -17,7 +17,7 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
-    <style name="HomeContainer" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="HomeContainer" parent="Theme.Material3.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/violate</item>
         <item name="colorPrimaryVariant">@color/yellow_20</item>
@@ -35,11 +35,32 @@
 
     </style>
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Customize your theme here -->
-        <item name="android:statusBarColor">@color/red</item>
-        <item name="android:windowBackground">@color/red</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
+    <style name="BudgetTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/violate</item>
+        <item name="colorPrimaryVariant">@color/violate</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/violate</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="MaterialSwitch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Switch</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Switch" parent="MaterialSwitch">
+        <item name="colorPrimary">@color/violate</item>
+        <item name="colorOnSurface">@color/violate_20</item>
+        <item name="android:trackTint">@color/violate_20</item>
+        <item name="trackColorInactive">@color/violate_20</item>
+
     </style>
 </resources>

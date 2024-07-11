@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
@@ -26,10 +27,12 @@ import com.internship.expensetracker.presenter.screen.activity.HomeContainerActi
 import com.internship.expensetracker.presenter.viewmodel.ExpenseAddViewModel
 import com.internship.expensetracker.presenter.viewmodel.TransactionViewModel
 import com.internship.expensetracker.presenter.viewmodel.TransactionViewModelFactory
+import com.internship.expensetracker.util.Constant
 import com.internship.expensetracker.util.base64ToBitmap
 import java.util.Date
 
 class ExpenseAddFragment : BaseFragment() {
+    private val transactionType: String by lazy { arguments?.getString(Constant.TRANSACTION_TYPE) ?: "" }
     private lateinit var binding: FragmentExpenseAddBinding
     private val transactionViewModel: TransactionViewModel by viewModels {
         TransactionViewModelFactory(ExpenseRepository(
@@ -47,8 +50,18 @@ class ExpenseAddFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.window?.statusBarColor = resources.getColor(R.color.red, null)
 
+        setUpViews()
+    }
+
+    private fun setUpViews() {
+        if (transactionType == Constant.EXPENSE) {
+            activity?.window?.statusBarColor = resources.getColor(R.color.red, null)
+            binding.root.setBackgroundColor(requireContext().getColor(R.color.red))
+        } else {
+            activity?.window?.statusBarColor = resources.getColor(R.color.green, null)
+            binding.root.setBackgroundColor(requireContext().getColor(R.color.green))
+        }
         binding.ivExpenseBackPressed.setOnClickListener {
             (activity as HomeContainerActivity).onBackPressed()
         }
@@ -57,46 +70,63 @@ class ExpenseAddFragment : BaseFragment() {
             clearImage()
         }
 
-        binding.btnSignUp.setOnClickListener {
+        binding.btnContinue.setOnClickListener {
             sendUserData()
         }
+        //val adapter = CustomSpinnerAdapter(requireContext(), spinnerItems)
 
-        val spinnerItems = listOf("Aman", "Rajveer", "Tanuj", "Vipul")
-        val adapter = CustomSpinnerAdapter(requireContext(), spinnerItems)
-        binding.spinnerCategory.adapter = adapter
-        binding.spinnerWallet.adapter = adapter
+        val spinnerItems = arrayOf("Shopping", "Subscription", "Food", "Salary", "Transportation")
+        val adapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_dropdown_item,
+            spinnerItems
+        )
+        binding.spinnerCategory.setAdapter(adapter)
+        binding.spinnerWallet.setAdapter(adapter)
 
         binding.llAddAttachment.setOnClickListener {
             findNavController()
                 .navigate(R.id.expenseAddBottomSheetFragment)
         }
-//        parentFragmentManager.setFragmentResultListener("dataFromSecond",
-//            viewLifecycleOwner) {_, bundle ->
-//
-//            val result = bundle.getString("data")
-//            result?.let {
-//                binding.rlExpenseFile.visibility = View.VISIBLE
-//                binding.imgUserExpense.setImageBitmap(base64ToBitmap(result))
-//                binding.llAddAttachment.visibility = View.GONE
-//                Log.d("debugging", result)
-//            }
-//        }
+        //        parentFragmentManager.setFragmentResultListener("dataFromSecond",
+        //            viewLifecycleOwner) {_, bundle ->
+        //
+        //            val result = bundle.getString("data")
+        //            result?.let {
+        //                binding.rlExpenseFile.visibility = View.VISIBLE
+        //                binding.imgUserExpense.setImageBitmap(base64ToBitmap(result))
+        //                binding.llAddAttachment.visibility = View.GONE
+        //                Log.d("debugging", result)
+        //            }
+        //        }
     }
 
     private fun sendUserData() {
         val balance = binding.etBudgetMoney.text.toString()
-        val category = binding.spinnerCategory.selectedItem.toString()
+        val category = binding.spinnerCategory.text.toString()
         val description = binding.etDescription.text.toString()
-        val wallet = binding.spinnerWallet.selectedItem.toString()
+        val wallet = binding.spinnerWallet.text.toString()
 
-        transactionViewModel.insertTransaction(
-            Transaction(
-                0, balance, category, description,
-                wallet, "", ""
-            )
-        )
+        Log.d("debugging", category)
+        if (isDetailsFill(balance, category, description, wallet)) {
 
-        findNavController().navigateUp()
+            if (transactionType == Constant.EXPENSE) {
+                transactionViewModel.insertTransaction(
+                    Transaction(
+                        0, transactionMoney = ((balance.toInt() * -1).toString()), category = category,
+                        description = description, wallet = wallet, transactionType = transactionType
+                    )
+                )
+            } else {
+                transactionViewModel.insertTransaction(
+                    Transaction(
+                        0, transactionMoney = balance, category = category,
+                        description = description, wallet = wallet, transactionType = transactionType
+                    )
+                )
+            }
+            findNavController().navigateUp()
+        }
     }
 
     private fun clearImage() {
@@ -114,6 +144,28 @@ class ExpenseAddFragment : BaseFragment() {
             binding.rlExpenseFile.visibility = View.GONE
             binding.imgUserExpense.setImageURI(null)
             binding.llAddAttachment.visibility = View.VISIBLE
+        }
+    }
+
+    private fun isDetailsFill(balance: String, category: String, description: String, wallet: String): Boolean {
+        return when {
+            balance.isEmpty() -> {
+                showToast("Balance not to be empty")
+                false
+            }
+            category == "Category" -> {
+                showToast("Please Select Category")
+                false
+            }
+            description.isEmpty() -> {
+                showToast("Description not be empty")
+                false
+            }
+            wallet == "Wallet" -> {
+                showToast("Please Select Wallet")
+                false
+            }
+            else -> true
         }
     }
 }
