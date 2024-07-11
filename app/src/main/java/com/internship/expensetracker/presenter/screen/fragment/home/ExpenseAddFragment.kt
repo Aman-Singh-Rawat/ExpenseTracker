@@ -30,6 +30,7 @@ import com.internship.expensetracker.presenter.viewmodel.TransactionViewModelFac
 import com.internship.expensetracker.util.Constant
 import com.internship.expensetracker.util.base64ToBitmap
 import java.util.Date
+import java.util.UUID
 
 class ExpenseAddFragment : BaseFragment() {
     private val transactionType: String by lazy { arguments?.getString(Constant.TRANSACTION_TYPE) ?: "" }
@@ -107,22 +108,19 @@ class ExpenseAddFragment : BaseFragment() {
         val description = binding.etDescription.text.toString()
         val wallet = binding.spinnerWallet.text.toString()
 
-        val string: String = Date().time.toString()
-
-        Log.d("debugging", category)
         if (isDetailsFill(balance, category, description, wallet)) {
-
+            val id = UUID.randomUUID().toString()
             if (transactionType == Constant.EXPENSE) {
                 transactionViewModel.insertTransaction(
                     Transaction(
-                        0, transactionMoney = ((balance.toInt() * -1).toString()), category = category,
+                        id, transactionMoney = ((balance.toInt() * -1).toString()), category = category,
                         description = description, wallet = wallet, transactionType = transactionType
                     )
                 )
             } else {
                 transactionViewModel.insertTransaction(
                     Transaction(
-                        0, transactionMoney = balance, category = category,
+                        id, transactionMoney = balance, category = category,
                         description = description, wallet = wallet, transactionType = transactionType
                     )
                 )

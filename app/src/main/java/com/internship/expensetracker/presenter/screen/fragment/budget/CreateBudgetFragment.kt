@@ -36,10 +36,8 @@ class CreateBudgetFragment : Fragment() {
         binding.createBudgetSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 binding.createBudgetSlider.visibility = View.VISIBLE
-                Log.d("debugging", "true")
             }
             else {
-                Log.d("debugging", "false")
                 binding.createBudgetSlider.visibility = View.GONE
             }
         }

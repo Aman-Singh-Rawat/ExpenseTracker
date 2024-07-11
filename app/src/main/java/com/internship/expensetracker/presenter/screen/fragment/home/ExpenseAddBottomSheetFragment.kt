@@ -41,7 +41,6 @@ class ExpenseAddBottomSheetFragment : BottomSheetDialogFragment() {
     private val takePictureLauncher = registerForActivityResult(
         ActivityResultContracts.TakePicturePreview()) {bitmap: Bitmap? ->
 
-        //Log.d("debugging", bitmap.toString())
         if (bitmap != null) {
             val result = Bundle().apply {
                 putString("data", bitmap.toString())
