@@ -32,7 +32,9 @@ class HomeFragment : BaseFragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val recentTransAdapter = RecentTransAdapter()
+    private val recentTransAdapter by lazy {
+        RecentTransAdapter(requireActivity())
+    }
     private var isSelectedTime: String = "Today"
 
     override fun onCreateView(

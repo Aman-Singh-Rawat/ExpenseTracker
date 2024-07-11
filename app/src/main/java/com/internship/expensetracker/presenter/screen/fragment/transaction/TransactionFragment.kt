@@ -15,7 +15,9 @@ import com.internship.expensetracker.presenter.adapters.RecentTransAdapter
 import com.internship.expensetracker.presenter.screen.activity.HomeContainerActivity
 
 class TransactionFragment : Fragment() {
-    private val recentTransAdapter = RecentTransAdapter()
+    private val recentTransAdapter by lazy {
+        RecentTransAdapter(requireActivity())
+    }
     private lateinit var binding: FragmentTransactionBinding
 
     override fun onCreateView(
