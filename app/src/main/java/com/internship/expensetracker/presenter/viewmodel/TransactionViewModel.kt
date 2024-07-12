@@ -13,8 +13,18 @@ class TransactionViewModel(private val repository: ExpenseRepository): ViewModel
     val transactionList: LiveData<List<Transaction>> = repository.getAllTransaction()
 
     fun insertTransaction(transaction: Transaction) {
-        viewModelScope.launch(Dispatchers.IO){
-            repository.insertTransaction(transaction = transaction)
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertTransaction(transaction)
+        }
+    }
+
+    fun getSelectedTransaction(transactionId: String): LiveData<Transaction> {
+        return repository.getSelectedTransaction(transactionId)
+    }
+
+    fun deleteTransaction(transaction: Transaction) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteTransaction(transaction)
         }
     }
 }

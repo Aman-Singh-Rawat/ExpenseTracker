@@ -97,7 +97,6 @@ class ExpenseAddFragment : BaseFragment() {
                         binding.rlExpenseFile.visibility = View.VISIBLE
                         binding.imgUserExpense.setImageURI(result.toUri())
                         binding.llAddAttachment.visibility = View.GONE
-                        Log.d("debugging", result)
                     }
                 }
     }

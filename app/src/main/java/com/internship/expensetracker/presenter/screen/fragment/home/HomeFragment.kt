@@ -1,14 +1,15 @@
 package com.internship.expensetracker.presenter.screen.fragment.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.internship.expensetracker.R
 import com.internship.expensetracker.core.BaseFragment
@@ -19,8 +20,9 @@ import com.internship.expensetracker.presenter.database.TransactionDatabase
 import com.internship.expensetracker.presenter.repository.ExpenseRepository
 import com.internship.expensetracker.presenter.viewmodel.TransactionViewModel
 import com.internship.expensetracker.presenter.viewmodel.TransactionViewModelFactory
+import com.internship.expensetracker.util.Constant
 
-class HomeFragment : BaseFragment() {
+class HomeFragment : BaseFragment(), RecentTransAdapter.onBudgetItemClicked {
     private val transactionViewModel: TransactionViewModel by viewModels {
         TransactionViewModelFactory(
             ExpenseRepository(
@@ -33,7 +35,7 @@ class HomeFragment : BaseFragment() {
     private val binding get() = _binding!!
 
     private val recentTransAdapter by lazy {
-        RecentTransAdapter(requireActivity())
+        RecentTransAdapter(requireActivity(), this)
     }
     private var isSelectedTime: String = "Today"
 
@@ -67,10 +69,6 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun setupListeners() {
-        binding.llExpense.setOnClickListener {
-            findNavController().navigate(R.id.detailTransaction)
-        }
-
         binding.tvTagToday.setOnClickListener { selectTag("Today", it) }
         binding.tvTagWeek.setOnClickListener { selectTag("Week", it) }
         binding.tvTagMonth.setOnClickListener { selectTag("Month", it) }
@@ -125,5 +123,10 @@ class HomeFragment : BaseFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onBudgetClicked(transactionId: String) {
+        Log.d("debugging", transactionId)
+        findNavController().navigate(R.id.detailTransaction, bundleOf(Constant.TRANSACTION_ID to transactionId))
     }
 }

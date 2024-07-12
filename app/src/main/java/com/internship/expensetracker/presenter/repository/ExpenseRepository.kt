@@ -10,7 +10,15 @@ class ExpenseRepository(private val dao: TransactionDao) {
         return dao.getAllTransaction()
     }
 
+    fun getSelectedTransaction(transactionId: String): LiveData<Transaction> {
+        return dao.getSelectedTransaction(transactionId)
+    }
+
     suspend fun insertTransaction(transaction: Transaction) {
         dao.insertExpense(transaction)
+    }
+
+    suspend fun deleteTransaction(transaction: Transaction) {
+        dao.deleteTransaction(transaction)
     }
 }

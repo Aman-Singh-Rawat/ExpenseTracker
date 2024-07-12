@@ -14,9 +14,9 @@ import com.internship.expensetracker.databinding.FragmentTransactionBinding
 import com.internship.expensetracker.presenter.adapters.RecentTransAdapter
 import com.internship.expensetracker.presenter.screen.activity.HomeContainerActivity
 
-class TransactionFragment : Fragment() {
+class TransactionFragment : Fragment(), RecentTransAdapter.onBudgetItemClicked {
     private val recentTransAdapter by lazy {
-        RecentTransAdapter(requireActivity())
+        RecentTransAdapter(requireActivity(), this)
     }
     private lateinit var binding: FragmentTransactionBinding
 
@@ -54,5 +54,9 @@ class TransactionFragment : Fragment() {
             RecentTransItem(R.drawable.ic_food, "Food", "Buy a ramen",
                 32, "07:30 PM")
         )
+    }
+
+    override fun onBudgetClicked(transactionUi: String) {
+        TODO("Not yet implemented")
     }
 }

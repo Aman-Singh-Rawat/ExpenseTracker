@@ -15,13 +15,30 @@ import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.internship.expensetracker.R
 import com.internship.expensetracker.databinding.FragmentRemoveTransactionBottomSheetBinding
+import com.internship.expensetracker.presenter.database.TransactionDatabase
+import com.internship.expensetracker.presenter.repository.ExpenseRepository
 import com.internship.expensetracker.presenter.screen.activity.HomeContainerActivity
+import com.internship.expensetracker.presenter.viewmodel.TransactionViewModel
+import com.internship.expensetracker.presenter.viewmodel.TransactionViewModelFactory
+import com.internship.expensetracker.util.Constant
 
 class RemoveTransactionBottomSheetFragment : BottomSheetDialogFragment() {
+    private val transactionId by lazy {
+        arguments?.getString(Constant.TRANSACTION_ID) ?: ""
+    }
     private lateinit var binding: FragmentRemoveTransactionBottomSheetBinding
+    private val viewModel: TransactionViewModel by activityViewModels {
+        TransactionViewModelFactory(
+            ExpenseRepository(
+                TransactionDatabase.getDatabaseInstance(requireActivity().applicationContext)
+                    .transactionDao()
+            )
+        )
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,6 +51,7 @@ class RemoveTransactionBottomSheetFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnYes.setOnClickListener {
+
             (activity as HomeContainerActivity).onBackPressed()
             val dialog = Dialog(requireContext())
             dialog.setCancelable(false)
