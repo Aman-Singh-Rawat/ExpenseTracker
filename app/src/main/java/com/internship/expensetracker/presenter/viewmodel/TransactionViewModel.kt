@@ -8,9 +8,14 @@ import com.internship.expensetracker.data.models.Transaction
 import com.internship.expensetracker.presenter.repository.ExpenseRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.Date
 
 class TransactionViewModel(private val repository: ExpenseRepository): ViewModel() {
     val transactionList: LiveData<List<Transaction>> = repository.getAllTransaction()
+    val sumOfTransaction: LiveData<Double> = repository.getSumOfAllTransaction()
+    val sumOfIncome: LiveData<Double> = repository.getSumOfIncome()
+    val sumOfExpense: LiveData<Double> = repository.getSumOfExpense()
+
 
     fun insertTransaction(transaction: Transaction) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -26,6 +31,10 @@ class TransactionViewModel(private val repository: ExpenseRepository): ViewModel
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteTransaction(transaction)
         }
+    }
+
+    fun getTodayTransaction(startDate: Date, endDate: Date): LiveData<List<Transaction>> {
+        return repository.getTodayTransaction(startDate, endDate)
     }
 }
 

@@ -21,6 +21,7 @@ import com.internship.expensetracker.presenter.repository.ExpenseRepository
 import com.internship.expensetracker.presenter.viewmodel.TransactionViewModel
 import com.internship.expensetracker.presenter.viewmodel.TransactionViewModelFactory
 import com.internship.expensetracker.util.Constant
+import java.util.Calendar
 
 class HomeFragment : BaseFragment(), RecentTransAdapter.onBudgetItemClicked {
     private val transactionViewModel: TransactionViewModel by viewModels {
@@ -66,10 +67,41 @@ class HomeFragment : BaseFragment(), RecentTransAdapter.onBudgetItemClicked {
     private fun setupUI() {
         activity?.window?.statusBarColor =
             ContextCompat.getColor(requireContext(), R.color.yellow_20)
+
+        transactionViewModel.sumOfTransaction.observe(requireActivity(), Observer {
+            if (it <= 0) {
+                binding.tvAccountBalance.text = "$0"
+            } else {
+                binding.tvAccountBalance.text = "$$it".removeSuffix(".0")
+            }
+        })
+
+        transactionViewModel.sumOfIncome.observe(requireActivity(), Observer {
+            binding.tvIncome.text = "$$it".removeSuffix(".0")
+        })
+
+        transactionViewModel.sumOfExpense.observe(requireActivity(), Observer {
+            binding.tvExpense.text = "$" + ("$it".removePrefix("-")).removeSuffix(".0")
+        })
+
     }
 
     private fun setupListeners() {
-        binding.tvTagToday.setOnClickListener { selectTag("Today", it) }
+        val startDate = Calendar.getInstance()
+        startDate.set(Calendar.HOUR_OF_DAY, 0)
+        startDate.set(Calendar.MINUTE, 0)
+        startDate.set(Calendar.SECOND, 0)
+        startDate.set(Calendar.MILLISECOND, 0)
+
+        binding.tvTagToday.setOnClickListener {
+            selectTag("Today", it)
+            transactionViewModel.getTodayTransaction(
+                startDate.time, Calendar.getInstance().time
+            )
+                .observe(requireActivity(), Observer { todayTransaction ->
+                    recentTransAdapter.updateUi(todayTransaction)
+                })
+        }
         binding.tvTagWeek.setOnClickListener { selectTag("Week", it) }
         binding.tvTagMonth.setOnClickListener { selectTag("Month", it) }
         binding.tvTagYear.setOnClickListener { selectTag("Year", it) }
@@ -127,6 +159,9 @@ class HomeFragment : BaseFragment(), RecentTransAdapter.onBudgetItemClicked {
 
     override fun onBudgetClicked(transactionId: String) {
         Log.d("debugging", transactionId)
-        findNavController().navigate(R.id.detailTransaction, bundleOf(Constant.TRANSACTION_ID to transactionId))
+        findNavController().navigate(
+            R.id.detailTransaction,
+            bundleOf(Constant.TRANSACTION_ID to transactionId)
+        )
     }
 }

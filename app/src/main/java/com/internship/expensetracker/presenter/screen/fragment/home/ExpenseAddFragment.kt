@@ -102,7 +102,7 @@ class ExpenseAddFragment : BaseFragment() {
     }
 
     private fun sendUserData() {
-        val balance = binding.etBudgetMoney.text.toString()
+        val balance = binding.etBudgetMoney.text.toString().toDouble()
         val category = binding.spinnerCategory.text.toString()
         val description = binding.etDescription.text.toString()
         val wallet = binding.spinnerWallet.text.toString()
@@ -112,7 +112,7 @@ class ExpenseAddFragment : BaseFragment() {
             if (transactionType == Constant.EXPENSE) {
                 transactionViewModel.insertTransaction(
                     Transaction(
-                        id, transactionMoney = ((balance.toInt() * -1).toString()), category = category,
+                        id, transactionMoney = ((balance.toInt() * -1)).toDouble(), category = category,
                         description = description, wallet = wallet, transactionType = transactionType
                     )
                 )
@@ -146,9 +146,9 @@ class ExpenseAddFragment : BaseFragment() {
         }
     }
 
-    private fun isDetailsFill(balance: String, category: String, description: String, wallet: String): Boolean {
+    private fun isDetailsFill(balance: Double, category: String, description: String, wallet: String): Boolean {
         return when {
-            balance.isEmpty() -> {
+            balance.isNaN() -> {
                 showToast("Balance not to be empty")
                 false
             }

@@ -6,6 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.internship.expensetracker.data.models.Transaction
+import java.util.Date
 
 @Dao
 interface TransactionDao {
@@ -19,6 +20,18 @@ interface TransactionDao {
     @Delete
     suspend fun deleteTransaction(transaction: Transaction)
 
+    @Query("SELECT SUM(transactionMoney) FROM `transaction`")
+    fun getSumOfAllTransaction() : LiveData<Double>
+
+    @Query("SELECT SUM(transactionMoney) FROM `transaction` where transactionMoney < 0")
+    fun getSumOfExpense(): LiveData<Double>
+
+    @Query("SELECT SUM(transactionMoney) FROM `transaction` where transactionMoney > 0")
+    fun getSumOfIncome(): LiveData<Double>
+
     @Query("SELECT * FROM `transaction` WHERE transactionId = :transactionId")
     fun getSelectedTransaction(transactionId: String): LiveData<Transaction>
+
+    @Query("SELECT * FROM `transaction` WHERE transactionTime >= :startDate AND transactionTime < :endDate")
+    fun getTodayTransaction(startDate: Date, endDate: Date): LiveData<List<Transaction>>
 }

@@ -8,7 +8,7 @@ import java.util.Date
 data class Transaction (
     @PrimaryKey
     val transactionId: String,
-    val transactionMoney: String = "",
+    val transactionMoney: Double = 0.0,
     val category: String = "",
     val description: String = "",
     val wallet: String = "",

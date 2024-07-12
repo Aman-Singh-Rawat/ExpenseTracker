@@ -117,40 +117,41 @@
                     android:layout_weight="1"
                     android:background="@drawable/bg_income"
                     android:gravity="center"
-                    android:paddingTop="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_10sdp">
+                    android:paddingTop="@dimen/_12sdp"
+                    android:paddingBottom="@dimen/_12sdp">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:src="@drawable/ic_income" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_10sdp"
                         android:layout_weight="1"
-                        android:gravity="start"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins"
+                            android:fontFamily="@font/inter_medium"
                             android:includeFontPadding="false"
                             android:text="Income"
                             android:textColor="@color/white" />
 
                         <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvIncome"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
+                            android:fontFamily="@font/poppins_semibold"
                             android:includeFontPadding="false"
                             android:letterSpacing="0.03"
                             android:text="$5000"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/_15ssp" />
+                            android:textSize="@dimen/_17ssp" />
 
                     </LinearLayout>
 
@@ -163,40 +164,42 @@
                     android:layout_weight="1"
                     android:background="@drawable/bg_expense"
                     android:gravity="center"
-                    android:paddingTop="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_10sdp">
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:paddingTop="@dimen/_12sdp"
+                    android:paddingBottom="@dimen/_12sdp">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:src="@drawable/ic_expense" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_10sdp"
                         android:layout_weight="1"
-                        android:gravity="start"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins"
+                            android:fontFamily="@font/inter_medium"
                             android:includeFontPadding="false"
                             android:text="Expenses"
                             android:textColor="@color/white" />
 
                         <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvExpense"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
+                            android:fontFamily="@font/poppins_semibold"
                             android:includeFontPadding="false"
                             android:letterSpacing="0.03"
                             android:text="$5000"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/_15ssp" />
+                            android:textSize="@dimen/_17ssp" />
 
                     </LinearLayout>
 

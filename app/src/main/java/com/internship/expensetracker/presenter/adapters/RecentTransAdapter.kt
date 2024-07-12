@@ -30,7 +30,7 @@ class RecentTransAdapter(private val context: Context, private val listener: onB
                     } else {
                         tvTranTypeMoney.setTextColor(context.getColor(R.color.green))
                     }
-                    tvTranTypeMoney.text = transaction.transactionMoney
+                    tvTranTypeMoney.text = transaction.transactionMoney.toString()
                 }
             }
         }

@@ -66,7 +66,7 @@ class DetailTransaction : Fragment() {
                             requireContext().resources.getColorStateList(R.color.green, null)
                     }
 
-                    binding.tvTransactionMoney.text = transaction.transactionMoney.removePrefix("-")
+                    binding.tvTransactionMoney.text = transaction.transactionMoney.toString().removePrefix("-")
                     val formatter = SimpleDateFormat("EEEE d MMMM yyyy    HH:mm", Locale.ENGLISH)
                     binding.tvDate.text = formatter.format(transaction.transactionTime)
                     binding.tvTransactionType.text = transaction.transactionType
