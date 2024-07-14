@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginBottom="@dimen/_14sdp"
     android:paddingVertical="@dimen/_12sdp"
     android:paddingHorizontal="@dimen/_13sdp"
@@ -58,7 +59,7 @@
         android:letterSpacing="0.02"
         android:text="Remainining $0"
         android:textColor="@color/dark_100"
-        android:textSize="@dimen/_18ssp"
+        android:textSize="@dimen/_17ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/llBudgetType" />
 
@@ -74,8 +75,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvRemaining"
-        app:trackCornerRadius="20dp"
-        app:trackThickness="@dimen/_12sdp"
+        app:trackCornerRadius="100dp"
+        app:trackThickness="@dimen/_10sdp"
         android:theme="@style/dummy"/>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -86,7 +87,7 @@
         android:fontFamily="@font/inter_medium"
         android:text="$350 of $700"
         android:textColor="@color/light_20"
-        android:textSize="@dimen/_14ssp"
+        android:textSize="@dimen/_13ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/budgetItemProgress" />
@@ -96,12 +97,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_5sdp"
-        android:fontFamily="@font/inter_medium"
+        android:fontFamily="@font/inter"
         android:letterSpacing="0.02"
         android:text="You’ve exceed the limit!"
         android:textColor="@color/red"
-        android:textSize="@dimen/_12ssp"
+        android:textSize="@dimen/_11ssp"
         android:visibility="gone"
+        tools:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvBudgetOutOf" />

@@ -28,7 +28,7 @@ class RecentTransAdapter(private val context: Context, private val listener: onB
                     if (transaction.transactionType == Constant.EXPENSE) {
                         tvTranTypeMoney.setTextColor(context.getColor(R.color.red))
                     } else {
-                        tvTranTypeMoney.setTextColor(context.getColor(R.color.green))
+                        tvTranTypeMoney.setTextColor(context.getColor(R.color.green_100))
                     }
                     tvTranTypeMoney.text = transaction.transactionMoney.toString()
                 }

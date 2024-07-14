@@ -35,11 +35,11 @@
 
     </style>
 
-    <style name="BudgetTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="BudgetTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/violate</item>
         <item name="colorPrimaryVariant">@color/violate</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/violate</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/violate</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>

@@ -30,8 +30,8 @@
         android:textColor="@color/light_80"
         android:textSize="@dimen/_20ssp"
         app:layout_constraintBottom_toBottomOf="@id/imgPrevious"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/imgNext"
+        app:layout_constraintStart_toEndOf="@+id/imgPrevious"
         app:layout_constraintTop_toTopOf="@id/imgPrevious" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -70,6 +70,7 @@
             app:layout_constraintGuide_percent="0.95" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvBudgetEmpty"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"

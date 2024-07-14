@@ -5,14 +5,17 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.internship.expensetracker.data.models.Budget
 import com.internship.expensetracker.data.models.Transaction
+import com.internship.expensetracker.presenter.dao.BudgetDao
 import com.internship.expensetracker.presenter.dao.TransactionDao
 import com.internship.expensetracker.util.Converters
 
-@Database(entities = [Transaction::class], version = 1)
+@Database(entities = [Transaction::class, Budget::class], version = 1)
 @TypeConverters(Converters::class)
 abstract class TransactionDatabase: RoomDatabase() {
     abstract fun transactionDao(): TransactionDao
+    abstract fun budgetDao(): BudgetDao
 
     companion object {
         @Volatile

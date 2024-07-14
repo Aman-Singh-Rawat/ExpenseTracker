@@ -1,40 +1,31 @@
 package com.internship.expensetracker.presenter.screen.fragment.home
 
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.core.net.toUri
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.internship.expensetracker.R
 import com.internship.expensetracker.core.BaseFragment
 import com.internship.expensetracker.data.models.Transaction
 import com.internship.expensetracker.data.models.UserAddExpense
 import com.internship.expensetracker.databinding.FragmentExpenseAddBinding
-import com.internship.expensetracker.presenter.adapters.CustomSpinnerAdapter
 import com.internship.expensetracker.presenter.database.TransactionDatabase
 import com.internship.expensetracker.presenter.repository.ExpenseRepository
 import com.internship.expensetracker.presenter.screen.activity.HomeContainerActivity
-import com.internship.expensetracker.presenter.viewmodel.ExpenseAddViewModel
 import com.internship.expensetracker.presenter.viewmodel.TransactionViewModel
 import com.internship.expensetracker.presenter.viewmodel.TransactionViewModelFactory
 import com.internship.expensetracker.util.Constant
-import com.internship.expensetracker.util.base64ToBitmap
-import java.util.Date
+import com.internship.expensetracker.util.ImageConverter
 import java.util.UUID
 
 class ExpenseAddFragment : BaseFragment() {
     private val transactionType: String by lazy { arguments?.getString(Constant.TRANSACTION_TYPE) ?: "" }
     private lateinit var binding: FragmentExpenseAddBinding
+    private var transactionImage = ""
     private val transactionViewModel: TransactionViewModel by viewModels {
         TransactionViewModelFactory(ExpenseRepository(
             TransactionDatabase.getDatabaseInstance(requireActivity().applicationContext).transactionDao()
@@ -60,8 +51,8 @@ class ExpenseAddFragment : BaseFragment() {
             activity?.window?.statusBarColor = resources.getColor(R.color.red, null)
             binding.root.setBackgroundColor(requireContext().getColor(R.color.red))
         } else {
-            activity?.window?.statusBarColor = resources.getColor(R.color.green, null)
-            binding.root.setBackgroundColor(requireContext().getColor(R.color.green))
+            activity?.window?.statusBarColor = resources.getColor(R.color.green_100, null)
+            binding.root.setBackgroundColor(requireContext().getColor(R.color.green_100))
         }
         binding.ivExpenseBackPressed.setOnClickListener {
             (activity as HomeContainerActivity).onBackPressed()
@@ -89,20 +80,31 @@ class ExpenseAddFragment : BaseFragment() {
             findNavController()
                 .navigate(R.id.expenseAddBottomSheetFragment)
         }
-                parentFragmentManager.setFragmentResultListener("dataFromSecond",
-                    viewLifecycleOwner) {_, bundle ->
+        parentFragmentManager.setFragmentResultListener("dataFromSecond",
+            viewLifecycleOwner) {_, bundle ->
 
-                    val result = bundle.getString("data")
-                    result?.let {
-                        binding.rlExpenseFile.visibility = View.VISIBLE
-                        binding.imgUserExpense.setImageURI(result.toUri())
-                        binding.llAddAttachment.visibility = View.GONE
-                    }
+            val result = bundle.getString("data")
+
+            result?.let {
+                val image = ImageConverter.uriToBitmap(requireContext(), result.toUri())
+
+                image?.let {
+                    binding.imgUserExpense.setImageBitmap(it)
+                    binding.rlExpenseFile.visibility = View.VISIBLE
+                    binding.llAddAttachment.visibility = View.GONE
+                    transactionImage = ImageConverter.converterBitmapToString(image)
                 }
+
+            }
+        }
     }
 
     private fun sendUserData() {
-        val balance = binding.etBudgetMoney.text.toString().toDouble()
+        var balance: Double = if (binding.etBudgetMoney.text.isNullOrBlank()) {
+            0.0
+        } else {
+            binding.etBudgetMoney.text.toString().toDouble()
+        }
         val category = binding.spinnerCategory.text.toString()
         val description = binding.etDescription.text.toString()
         val wallet = binding.spinnerWallet.text.toString()
@@ -112,14 +114,14 @@ class ExpenseAddFragment : BaseFragment() {
             if (transactionType == Constant.EXPENSE) {
                 transactionViewModel.insertTransaction(
                     Transaction(
-                        id, transactionMoney = ((balance.toInt() * -1)).toDouble(), category = category,
+                        id, transactionImage, transactionMoney = ((balance.toInt() * -1)).toDouble(), category = category,
                         description = description, wallet = wallet, transactionType = transactionType
                     )
                 )
             } else {
                 transactionViewModel.insertTransaction(
                     Transaction(
-                        id, transactionMoney = balance, category = category,
+                        id, "", transactionMoney = balance, category = category,
                         description = description, wallet = wallet, transactionType = transactionType
                     )
                 )
@@ -148,7 +150,7 @@ class ExpenseAddFragment : BaseFragment() {
 
     private fun isDetailsFill(balance: Double, category: String, description: String, wallet: String): Boolean {
         return when {
-            balance.isNaN() -> {
+            balance <= 0.0 -> {
                 showToast("Balance not to be empty")
                 false
             }

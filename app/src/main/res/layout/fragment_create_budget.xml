@@ -59,16 +59,32 @@
         app:layout_constraintStart_toStartOf="@id/glCreateBudgetStart"
         app:layout_constraintBottom_toTopOf="@+id/tvBudgetMoney" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tvBudgetMoney"
-        style="@style/tvMoney"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/llExpenseCorners"
-        android:text="$0"
-        android:includeFontPadding="false"
+        app:boxStrokeColor="@null"
+        app:boxStrokeWidth="0dp"
+        app:hintEnabled="false"
         app:layout_constraintStart_toStartOf="@id/glCreateBudgetStart"
-        app:layout_constraintBottom_toTopOf="@+id/llExpenseCorners" />
+        app:layout_constraintBottom_toTopOf="@+id/llExpenseCorners" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBudgetMoney"
+            style="@style/tvMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:hint="$0"
+            android:includeFontPadding="false"
+            android:inputType="numberDecimal"
+            android:maxEms="5"
+            android:textColorHint="@color/white"
+            android:textCursorDrawable="@drawable/fragment_expense_add_cursor" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/llExpenseCorners"
@@ -142,12 +158,13 @@
             android:valueTo="100"
             app:trackHeight="5dp"
             android:visibility="gone"
+            tools:visibility="visible"
             style="@style/Widget.App.Slider"
             android:layout_marginTop="@dimen/_12sdp"
             app:layout_constraintTop_toBottomOf="@+id/tvReceiveAlertDesc"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/btnSignUp"
+            android:id="@+id/btnContinue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"

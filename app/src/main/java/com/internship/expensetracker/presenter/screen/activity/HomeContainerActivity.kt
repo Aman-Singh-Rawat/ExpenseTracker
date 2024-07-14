@@ -1,5 +1,7 @@
 package com.internship.expensetracker.presenter.screen.activity
 
+import android.content.pm.ActivityInfo
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +23,10 @@ class HomeContainerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeContainerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (Build.VERSION.SDK_INT != Build.VERSION_CODES.O) {
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+        }
 
         setupBottomNavigation()
         setupFab()

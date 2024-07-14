@@ -49,7 +49,7 @@
             style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/green"
+            android:backgroundTint="@color/green_100"
             android:src="@drawable/ic_half_income"
             android:visibility="gone"
             app:fabCustomSize="@dimen/_60sdp"

@@ -214,11 +214,11 @@
             android:id="@+id/tvSpendFrequency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
             android:fontFamily="@font/poppins_semibold"
             android:text="Spend Frequency"
             android:textColor="@color/black"
             android:textSize="@dimen/_15ssp"
-            android:layout_marginTop="@dimen/_12sdp"
             app:layout_constraintStart_toStartOf="@id/glFragHomeStart"
             app:layout_constraintTop_toBottomOf="@id/clProfile" />
 
@@ -231,7 +231,117 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvSpendFrequency"/>
 
-        <LinearLayout
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:tabBackground="@drawable/bg_weeks"
+            app:tabTextColor="@color/gray"
+            app:tabMinWidth="@dimen/_85sdp"
+            app:tabIndicator="@null"
+            app:tabMode="scrollable"
+            app:tabPaddingEnd="@dimen/_20sdp"
+            app:tabPaddingStart="@dimen/_20sdp"
+            android:background="@android:color/transparent"
+            app:tabSelectedTextColor="@color/yellow_100"
+            app:tabSelectedTextAppearance="@style/SelectedTabText"
+            app:tabRippleColor="@android:color/transparent"
+            app:tabTextAppearance="@style/TabTextAppearance"
+            app:layout_constraintTop_toBottomOf="@id/imgGraph"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Today"
+                android:textAlignment="center"
+                app:tabBackground="@drawable/bg_weeks"/>
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Week"
+                android:textAlignment="center"
+                app:tabBackground="@drawable/bg_weeks"/>
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Month"
+                android:textAlignment="center"
+                app:tabBackground="@drawable/bg_weeks"/>
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Year"
+                android:textAlignment="center"
+                app:tabBackground="@drawable/bg_weeks"/>
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRecentTrans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recent Transaction"
+            style="@style/daysText"
+            android:layout_marginTop="@dimen/_24sdp"
+            app:layout_constraintStart_toStartOf="@id/glFragHomeStart"
+            app:layout_constraintTop_toBottomOf="@id/tabLayout" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSeeAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_see_all"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:paddingStart="@dimen/_12sdp"
+            android:paddingTop="@dimen/_4sdp"
+            android:paddingEnd="@dimen/_12sdp"
+            android:paddingBottom="@dimen/_2sdp"
+            android:text="See All"
+            android:textColor="@color/violate"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvRecentTrans"
+            app:layout_constraintEnd_toEndOf="@+id/glFragHomeEnd"
+            app:layout_constraintTop_toTopOf="@+id/tvRecentTrans" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRecentTrans"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="?attr/actionBarSize"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/recent_transacation_item"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="@id/glFragHomeEnd"
+            app:layout_constraintStart_toStartOf="@id/glFragHomeStart"
+            app:layout_constraintTop_toBottomOf="@id/tvSeeAll" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glFragHomeStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.04"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glFragHomeEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.96"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
+
+<!--
+    <LinearLayout
             android:id="@+id/llTimeTags"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -300,62 +410,4 @@
                 android:textSize="@dimen/_11ssp"/>
 
         </LinearLayout>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvRecentTrans"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Recent Transaction"
-            style="@style/daysText"
-            android:layout_marginTop="@dimen/_24sdp"
-            app:layout_constraintStart_toStartOf="@id/glFragHomeStart"
-            app:layout_constraintTop_toBottomOf="@id/llTimeTags" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvSeeAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_see_all"
-            android:fontFamily="@font/poppins_semibold"
-            android:gravity="center"
-            android:paddingStart="@dimen/_12sdp"
-            android:paddingTop="@dimen/_4sdp"
-            android:paddingEnd="@dimen/_12sdp"
-            android:paddingBottom="@dimen/_2sdp"
-            android:text="See All"
-            android:textColor="@color/violate"
-            android:textSize="@dimen/_13ssp"
-            app:layout_constraintBottom_toBottomOf="@+id/tvRecentTrans"
-            app:layout_constraintEnd_toEndOf="@+id/glFragHomeEnd"
-            app:layout_constraintTop_toTopOf="@+id/tvRecentTrans" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvRecentTrans"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="?attr/actionBarSize"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/recent_transacation_item"
-            android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toEndOf="@id/glFragHomeEnd"
-            app:layout_constraintStart_toStartOf="@id/glFragHomeStart"
-            app:layout_constraintTop_toBottomOf="@id/tvSeeAll" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/glFragHomeStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.04"/>
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/glFragHomeEnd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.96"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.core.widget.NestedScrollView>
+-->
