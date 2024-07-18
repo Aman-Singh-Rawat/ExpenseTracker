@@ -6,6 +6,267 @@
     android:layout_height="match_parent"
     android:background="@color/red"
     android:fillViewport="true"
+    tools:context=".presenter.screen.fragment.home.ExpenseAddFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivExpenseBackPressed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_margin="@dimen/_16sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:selectableItemBackground"
+            android:src="@drawable/ic_back_arrow"
+            app:tint="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/fragmentTopTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/_16sdp"
+            android:gravity="center"
+            android:text="Expense" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvHowMuch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivExpenseBackPressed"
+            android:layout_alignStart="@+id/ivExpenseBackPressed"
+            android:fontFamily="@font/poppins_medium"
+            android:text="How much?"
+            android:textColor="@color/light_80"
+            android:textSize="@dimen/_14ssp"
+            android:layout_marginTop="@dimen/_58sdp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilBudget"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvHowMuch"
+            android:layout_alignStart="@+id/ivExpenseBackPressed"
+            app:boxStrokeColor="@null"
+            app:boxStrokeWidth="0dp"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etBudgetMoney"
+                style="@style/tvMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:hint="$0"
+                android:includeFontPadding="false"
+                android:inputType="numberDecimal"
+                android:maxEms="5"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@drawable/fragment_expense_add_cursor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:layout_below="@id/tilBudget"
+            android:layout_alignParentBottom="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fillViewport="true"
+                android:fitsSystemWindows="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_12sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:background="@drawable/bg_bottom_expense_rounded_card">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCategory"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:background="@drawable/bg_spinner_category"
+                        android:paddingRight="@dimen/_7sdp"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp"
+                        app:endIconDrawable="@drawable/ic_arrow_down_spinner"
+                        app:endIconTint="@color/gray">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/spinnerCategory"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="none"
+                            android:text="Category" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        app:hintEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_edittext"
+                            android:fontFamily="@font/poppins"
+                            android:hint="Description"
+                            android:inputType="textMultiLine"
+                            android:letterSpacing="0.01"
+                            android:textColorHint="@color/light_20"
+                            android:textSize="@dimen/_13ssp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilWallet"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:background="@drawable/bg_spinner_category"
+                        android:paddingRight="@dimen/_7sdp"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp"
+                        app:endIconDrawable="@drawable/ic_arrow_down_spinner"
+                        app:endIconTint="@color/gray">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/spinnerWallet"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="none"
+                            android:text="Wallet" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rlExpenseFile"
+                        android:layout_width="@dimen/_105sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/_4sdp"
+                            app:cardBackgroundColor="@color/violate_light"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:cardElevation="0dp">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/imgUserExpense"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_planning_ahead" />
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgClearImage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?android:selectableItemBackground"
+                            android:src="@drawable/ic_close" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llAddAttachment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:background="@drawable/bg_add_expense_attachment"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:selectableItemBackground"
+                        android:gravity="center"
+                        tools:visibility="gone">
+
+                        <androidx.appcompat.widget.AppCompatCheckedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/img_attachment"
+                            android:drawablePadding="@dimen/_14sdp"
+                            android:fontFamily="@font/poppins"
+                            android:includeFontPadding="false"
+                            android:letterSpacing="0.01"
+                            android:text="Add attachment"
+                            android:textAlignment="center"
+                            android:textColor="@color/light_20"
+                            android:textSize="@dimen/_13ssp" />
+
+                    </LinearLayout>
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/btnContinue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:background="@drawable/bg_sign_up_btn"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:foreground="?android:selectableItemBackground"
+                        android:gravity="center"
+                        android:padding="@dimen/_10sdp"
+                        android:text="Continue"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14ssp" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>
+
+
+<!--
+    <?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/red"
+    android:fillViewport="true"
     android:fitsSystemWindows="true"
     tools:context=".presenter.screen.fragment.home.ExpenseAddFragment">
 
@@ -79,6 +340,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tilBudget"
             android:layout_alignParentBottom="true"
+
             android:background="@drawable/bg_bottom_expense_rounded_card"
             android:orientation="vertical"
             android:padding="@dimen/_12sdp"
@@ -243,8 +505,9 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14ssp" />
 
-            </LinearLayout>
+            </LinearLayout>+
 
         </ScrollView>
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>
+-->

@@ -27,10 +27,12 @@ class CreateBudgetFragment : BaseFragment() {
     private val viewModel: BudgetViewModel by viewModels {
         BudgetViewModelProvider(
             BudgetRepository(
-                TransactionDatabase.getDatabaseInstance(requireActivity().applicationContext).budgetDao()
+                TransactionDatabase.getDatabaseInstance(requireActivity().applicationContext)
+                    .budgetDao()
             )
         )
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -61,10 +63,13 @@ class CreateBudgetFragment : BaseFragment() {
             val sliderPercent = binding.createBudgetSlider.value.toInt()
 
             if (isValuesAreEmpty(budgetMoney, budgetCategory)) {
-                viewModel.insertBudget(Budget(UUID.randomUUID().toString(),
-                    budgetMoney, budgetCategory, Date(), flag, sliderPercent))
-
-                findNavController().navigateUp()
+                viewModel.insertBudget(Budget(
+                    UUID.randomUUID().toString(),
+                    budgetMoney, budgetCategory, Date(), flag, sliderPercent
+                ), {
+                        showToast(it)
+                    activity?.supportFragmentManager?.popBackStack()
+                    }) { it.localizedMessage?.let { it1 -> showToast(it1) } }
             }
         }
 

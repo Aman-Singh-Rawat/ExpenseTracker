@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.internship.expensetracker.data.models.Budget
 import java.util.Date
@@ -11,7 +12,7 @@ import java.util.Date
 @Dao
 interface BudgetDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun insertBudget(budget: Budget)
 
     @Delete

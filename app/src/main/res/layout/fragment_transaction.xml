@@ -87,61 +87,17 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvToday"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="Today"
-            style="@style/daysText"
-            app:layout_constraintStart_toStartOf="@id/glFragTranStart"
-            app:layout_constraintEnd_toEndOf="@id/glFragTranEnd"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView"/>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTodayTrans"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
             android:layout_marginBottom="?attr/actionBarSize"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="@id/glFragTranEnd"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@id/glFragTranStart"
-            app:layout_constraintTop_toBottomOf="@id/tvToday"
-            tools:listitem="@layout/recent_transacation_item" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvYesterday"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Yesterday"
-            style="@style/daysText"
-            android:layout_marginBottom="?attr/actionBarSize"
             app:layout_constraintStart_toStartOf="@id/glFragTranStart"
             app:layout_constraintEnd_toEndOf="@id/glFragTranEnd"
-            app:layout_constraintTop_toBottomOf="@+id/rvTodayTrans"/>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toEndOf="@id/glFragTranEnd"
-            app:layout_constraintStart_toStartOf="@id/glFragTranStart"
-            app:layout_constraintTop_toBottomOf="@id/tvYesterday">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvYesterdayTrans"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="?attr/actionBarSize"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintHorizontal_bias="0.0"
-                tools:listitem="@layout/recent_transacation_item" />
-
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+            tools:listitem="@layout/transaction_item" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/glFragTranStart"

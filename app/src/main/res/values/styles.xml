@@ -59,6 +59,7 @@
     </style>
 
     <style name="dummy" parent="Widget.MaterialComponents.LinearProgressIndicator">
+        <item name="android:progressTint">@color/red</item>
         <item name="trackCornerRadius">@dimen/_20sdp</item>
         <item name="trackThickness">@dimen/_12sdp</item>
         <item name="android:max">100</item>

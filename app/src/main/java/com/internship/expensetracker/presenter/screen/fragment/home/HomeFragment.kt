@@ -23,6 +23,7 @@ import com.internship.expensetracker.presenter.repository.ExpenseRepository
 import com.internship.expensetracker.presenter.viewmodel.TransactionViewModel
 import com.internship.expensetracker.presenter.viewmodel.TransactionViewModelFactory
 import com.internship.expensetracker.util.Constant
+import java.text.SimpleDateFormat
 import java.util.Calendar
 
 class HomeFragment : BaseFragment(), RecentTransAdapter.onBudgetItemClicked {
@@ -77,9 +78,11 @@ class HomeFragment : BaseFragment(), RecentTransAdapter.onBudgetItemClicked {
     }
 
     private fun setupUI() {
+        val simpleDateFormat = SimpleDateFormat("MMMM")
         activity?.window?.statusBarColor =
             ContextCompat.getColor(requireContext(), R.color.yellow_20)
 
+        binding.tvMonth.text = simpleDateFormat.format(currentDate)
         setTransactionTime()
         transactionViewModel.sumOfTransaction.observe(viewLifecycleOwner, Observer {
             if (it == null) {

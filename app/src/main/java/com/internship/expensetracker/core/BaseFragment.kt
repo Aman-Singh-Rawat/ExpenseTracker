@@ -8,7 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.internship.expensetracker.R
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 open class BaseFragment: Fragment() {
     internal var progressDialog: Dialog? = null
@@ -33,7 +36,11 @@ open class BaseFragment: Fragment() {
     }
 
     internal fun showToast(msg: String) {
-        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+        lifecycleScope.launch(Dispatchers.Main) {
+            if (isAdded && context != null) {
+                Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     internal fun hideProgress() {

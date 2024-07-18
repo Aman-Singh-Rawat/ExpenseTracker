@@ -23,6 +23,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <View
+            android:id="@+id/budgetItemView"
             android:layout_width="@dimen/_14sdp"
             android:layout_height="@dimen/_14sdp"
             android:background="@drawable/bg_budget_type_rounded_view"
@@ -69,7 +70,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
         android:indeterminate="false"
-        android:indeterminateTint="@color/yellow_100"
         android:max="100"
         android:progress="50"
         app:layout_constraintEnd_toEndOf="parent"

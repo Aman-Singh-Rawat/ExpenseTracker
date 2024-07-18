@@ -12,9 +12,12 @@ import java.util.Date
 class BudgetViewModel(private val repository: BudgetRepository): ViewModel() {
     val budgetLiveData: LiveData<List<Budget>> = repository.getAllBudget()
 
-    fun insertBudget(budget: Budget) {
+    fun insertBudget(budget: Budget, onSuccess: (String) -> Unit, onFailure: (Throwable) -> Unit) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.insertBudget(budget)
+            repository.insertBudget(budget).fold(
+                onSuccess = {onSuccess.invoke(it)},
+                onFailure = {onFailure.invoke(it)}
+            )
         }
     }
 

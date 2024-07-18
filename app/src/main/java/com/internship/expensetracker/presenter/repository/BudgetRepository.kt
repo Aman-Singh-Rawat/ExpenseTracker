@@ -1,5 +1,6 @@
 package com.internship.expensetracker.presenter.repository
 
+import android.database.sqlite.SQLiteConstraintException
 import androidx.lifecycle.LiveData
 import com.internship.expensetracker.data.models.Budget
 import com.internship.expensetracker.presenter.dao.BudgetDao
@@ -7,8 +8,14 @@ import java.util.Date
 
 class BudgetRepository(private val dao: BudgetDao) {
 
-    suspend fun insertBudget(budget: Budget) {
-        dao.insertBudget(budget)
+    suspend fun insertBudget(budget: Budget): Result<String> {
+        return try {
+            dao.insertBudget(budget)
+            Result.success("${budget.budgetCategory} add successfully")
+        } catch (e: SQLiteConstraintException) {
+            Result.failure(Exception("${budget.budgetCategory} already exists"))
+        }
+
     }
 
     suspend fun deleteBudget(budget: Budget) {

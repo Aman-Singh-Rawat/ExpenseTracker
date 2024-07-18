@@ -1,10 +1,14 @@
 package com.internship.expensetracker.data.models
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.util.Date
 
-@Entity(tableName = "budget")
+@Entity(
+    tableName = "budget",
+    indices = [Index(value = ["budgetCategory"], unique = true)]
+)
 data class Budget(
     @PrimaryKey
     val budgetId: String = "",

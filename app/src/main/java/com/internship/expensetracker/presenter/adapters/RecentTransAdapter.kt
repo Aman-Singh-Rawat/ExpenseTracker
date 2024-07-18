@@ -1,8 +1,10 @@
 package com.internship.expensetracker.presenter.adapters
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.internship.expensetracker.R
 import com.internship.expensetracker.data.models.Transaction
@@ -17,6 +19,7 @@ class RecentTransAdapter(private val context: Context, private val listener: onB
         : RecyclerView.ViewHolder(binding.root) {
             fun bind(transaction: Transaction) {
                 binding.apply {
+                    changeImage(transaction, binding)
                     //imgTranImage.setImageResource(recentList[position].transImage)
                     tvTranType.text = transaction.category
                     tvTranDescription.text = transaction.description
@@ -34,6 +37,21 @@ class RecentTransAdapter(private val context: Context, private val listener: onB
                 }
             }
         }
+
+    private fun changeTransactionImage(binding: RecentTransacationItemBinding, image: Int, lightColor: Int) {
+        binding.cvTranImage.setCardBackgroundColor(ContextCompat.getColor(context, lightColor))
+        binding.imgTranImage.setImageResource(image)
+    }
+
+    private fun changeImage(transaction: Transaction, binding: RecentTransacationItemBinding) {
+        when (transaction.category) {
+            "Shopping" -> changeTransactionImage(binding, R.drawable.ic_yellow_trash, R.color.yellow_20)
+            "Subscription" -> changeTransactionImage(binding,R.drawable.ic_subscription, R.color.violate_20)
+            "Food" -> changeTransactionImage(binding,R.drawable.ic_food, R.color.red_20)
+            "Salary" -> changeTransactionImage(binding,R.drawable.ic_salary, R.color.green_20)
+            "Transportation" -> changeTransactionImage(binding,R.drawable.ic_transportation, R.color.blue_20)
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecentTransViewHolder {
         val binding = RecentTransacationItemBinding

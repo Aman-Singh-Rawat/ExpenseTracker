@@ -26,7 +26,9 @@ class BudgetFragment : Fragment() {
     private var transactionList: List<Transaction> = listOf()
     private val calendar = Calendar.getInstance()
     private val simpleDateFormat = SimpleDateFormat("MMMM")
-    private val budgetAdapter = BudgetAdapter()
+    private val budgetAdapter by lazy {
+        BudgetAdapter(requireActivity())
+    }
     private lateinit var binding: FragmentBudgetBinding
     private val viewModel: BudgetViewModel by activityViewModels {
         BudgetViewModelProvider(
