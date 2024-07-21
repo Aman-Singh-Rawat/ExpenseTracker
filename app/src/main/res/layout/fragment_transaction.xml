@@ -87,17 +87,25 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvTodayTrans"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="?attr/actionBarSize"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="@id/glFragTranStart"
             app:layout_constraintEnd_toEndOf="@id/glFragTranEnd"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView"
-            tools:listitem="@layout/transaction_item" />
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTodayTrans"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="?attr/actionBarSize"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/transaction_item"/>
+
+        </LinearLayout>
+
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/glFragTranStart"

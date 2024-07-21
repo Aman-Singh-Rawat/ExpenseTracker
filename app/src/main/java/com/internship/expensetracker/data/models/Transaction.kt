@@ -7,8 +7,8 @@ import java.util.Date
 @Entity(tableName = "transaction")
 data class Transaction (
     @PrimaryKey
-    val transactionId: String,
-    val transactionImage: String,
+    val transactionId: String = "",
+    val transactionImage: String = "",
     val transactionMoney: Double = 0.0,
     val category: String = "",
     val description: String = "",

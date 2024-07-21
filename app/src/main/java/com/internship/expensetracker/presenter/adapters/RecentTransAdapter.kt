@@ -1,7 +1,6 @@
 package com.internship.expensetracker.presenter.adapters
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -67,6 +66,7 @@ class RecentTransAdapter(private val context: Context, private val listener: onB
     override fun onBindViewHolder(holder: RecentTransViewHolder, position: Int) {
         holder.bind(recentList[position])
         holder.itemView.setOnClickListener {
+            println("RecentTransactionAdapter:: ${recentList[position].transactionId}")
             listener.onBudgetClicked(recentList[position].transactionId)
         }
     }
@@ -77,6 +77,6 @@ class RecentTransAdapter(private val context: Context, private val listener: onB
     }
 
     interface onBudgetItemClicked {
-        fun onBudgetClicked(transactionUi: String)
+        fun onBudgetClicked(transactionId: String)
     }
 }

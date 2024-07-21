@@ -19,6 +19,7 @@ import com.internship.expensetracker.presenter.viewmodel.BudgetViewModel
 import com.internship.expensetracker.presenter.viewmodel.BudgetViewModelProvider
 import com.internship.expensetracker.presenter.viewmodel.TransactionViewModel
 import com.internship.expensetracker.presenter.viewmodel.TransactionViewModelFactory
+import com.internship.expensetracker.util.Constant
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
@@ -26,6 +27,7 @@ class BudgetFragment : Fragment() {
     private var transactionList: List<Transaction> = listOf()
     private val calendar = Calendar.getInstance()
     private val simpleDateFormat = SimpleDateFormat("MMMM")
+    private var commonBudgetMap: MutableMap<String, Any> = mutableMapOf()
     private val budgetAdapter by lazy {
         BudgetAdapter(requireActivity())
     }
@@ -108,8 +110,19 @@ class BudgetFragment : Fragment() {
                 } else {
                     binding.tvBudgetEmpty.visibility = View.GONE
                     binding.rvBudget.visibility = View.VISIBLE
-                    budgetAdapter.updateUi(it, transactionList)
+                    budgetAdapter.updateUi(it, matchingCategory())
                 }
+            }
+    }
+
+    private fun matchingCategory(): Map<String, Transaction> {
+        return transactionList
+            .groupBy { it.category }
+            .mapValues { (category, transactions) ->
+                val sum = transactions
+                    .filter { it.transactionType == Constant.EXPENSE }
+                    .sumOf { it.transactionMoney }
+                Transaction(category = category, transactionMoney = sum, transactionType = Constant.EXPENSE)
             }
     }
 

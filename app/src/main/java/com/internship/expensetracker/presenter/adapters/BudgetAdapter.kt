@@ -2,7 +2,6 @@ package com.internship.expensetracker.presenter.adapters
 
 import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,13 +11,49 @@ import com.internship.expensetracker.R
 import com.internship.expensetracker.data.models.Budget
 import com.internship.expensetracker.data.models.Transaction
 import com.internship.expensetracker.databinding.BudgetItemLayoutBinding
+import com.internship.expensetracker.util.Constant
 
 class BudgetAdapter(val context: Context): RecyclerView.Adapter<BudgetAdapter.BudgetViewHolder>() {
     private var sumOfTransaction = 0.0
-    private var commonList: List<Budget> = mutableListOf()
+    private var sumOfCommonCategory: Map<String, Transaction> = mutableMapOf()
     private var budgetList: List<Budget> = mutableListOf()
-    private var transactionList: List<Transaction> = mutableListOf()
-    class BudgetViewHolder(val binding: BudgetItemLayoutBinding): RecyclerView.ViewHolder(binding.root) {}
+
+    inner class BudgetViewHolder(val binding: BudgetItemLayoutBinding): RecyclerView.ViewHolder(binding.root) {
+        fun bind(budget: Budget) {
+            viewsColorChange(binding, budget)
+            val budgetMax = budget.budgetMoney
+            val budgetAchieve = budgetAchievement(budget) * -1
+
+            binding.apply {
+                tvBudgetType.text = budget.budgetCategory
+                tvBudgetOutOf.text = ("$budgetAchieve of $budgetMax".removeSuffix(".0"))
+                budgetItemProgress.max = budgetMax.toInt()
+                budgetItemProgress.progress = sumOfTransaction.toInt()
+
+                if (budgetAchieve > budgetMax) {
+                    tvExceedLimit.visibility = View.VISIBLE
+                    imgWarning.visibility = View.VISIBLE
+                    tvRemaining.text = "Remaining $0"
+                } else {
+                    tvExceedLimit.visibility = View.GONE
+                    imgWarning.visibility = View.GONE
+                    println("budgetMax is:: $budgetMax")
+                    println("budgetAchieve is:: ${budgetAchieve}")
+                    tvRemaining.text = "Remaining $${budgetMax - (budgetAchieve)}".removeSuffix(".0")
+                }
+            }
+        }
+    }
+
+    private fun budgetAchievement(budget: Budget): Int {
+        return sumOfCommonCategory[budget.budgetCategory]?.let { transaction ->
+            if (transaction.transactionType == Constant.EXPENSE) {
+                transaction.transactionMoney.toInt()
+            } else {
+                0
+            }
+        } ?: 0
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BudgetViewHolder {
         val binding = BudgetItemLayoutBinding
@@ -32,28 +67,7 @@ class BudgetAdapter(val context: Context): RecyclerView.Adapter<BudgetAdapter.Bu
     }
 
     override fun onBindViewHolder(holder: BudgetViewHolder, position: Int) {
-        holder.binding.apply {
-
-            viewsColorChange(holder.binding, budgetList[position])
-            val budgetAchieve = 0
-            val budgetMax = budgetList[position].budgetMoney
-
-            tvBudgetType.text = budgetList[position].budgetCategory
-            tvBudgetOutOf.text = "$budgetAchieve of $budgetMax".removeSuffix(".0")
-            budgetItemProgress.max = budgetMax.toInt()
-            budgetItemProgress.progress = sumOfTransaction.toInt()
-
-            if (budgetAchieve > budgetMax) {
-                tvExceedLimit.visibility = View.VISIBLE
-                imgWarning.visibility = View.VISIBLE
-                tvRemaining.text = "Remaining $0"
-            } else {
-                tvExceedLimit.visibility = View.GONE
-                imgWarning.visibility = View.GONE
-
-                tvRemaining.text = "Remaining $0"
-            }
-        }
+        holder.bind(budgetList[position])
     }
 
     private fun viewsColorChange(binding: BudgetItemLayoutBinding, budget: Budget) {
@@ -75,23 +89,9 @@ class BudgetAdapter(val context: Context): RecyclerView.Adapter<BudgetAdapter.Bu
         )
     }
 
-    fun updateUi(budgetList: List<Budget>, transactionList: List<Transaction>) {
+    fun updateUi(budgetList: List<Budget>, sumOfCommonCategory: Map<String, Transaction>) {
         this.budgetList = budgetList
-        this.transactionList = transactionList
-        getCommonList()
+        this.sumOfCommonCategory = sumOfCommonCategory
         notifyDataSetChanged()
-    }
-
-    private fun getCommonList() {
-        val budgetCategories = budgetList.map { it.budgetCategory }.toSet()
-        val transactionCategories = transactionList.map { it.category }.toSet()
-
-        val commonBudget = budgetCategories.intersect(transactionCategories)
-        commonBudget.map { category ->
-            commonList = budgetList.filter {
-                it.budgetCategory == category
-            }
-            println(commonList)
-        }
     }
 }
