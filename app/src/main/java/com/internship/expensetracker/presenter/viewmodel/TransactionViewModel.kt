@@ -35,21 +35,8 @@ class TransactionViewModel(private val repository: ExpenseRepository): ViewModel
     fun getTodayTransaction(startDate: Date, endDate: Date): LiveData<List<Transaction>> {
         return repository.getTodayTransaction(startDate, endDate)
     }
+
+    fun getTransactionUsingQuery(category: String): LiveData<List<Transaction>> {
+        return repository.getTransactionUsingQuery(category)
+    }
 }
-
-//
-//private var userAddExpense = Transaction()
-//fun addUserImage(expenseAttachment: String) {
-//    userAddExpense = userAddExpense.copy(attachmentImage = expenseAttachment)
-//    _expenseLiveData.value = userAddExpense
-//}
-//
-//fun addAllExpenseData(category: String, description: String, wallet: String) {
-//    userAddExpense = userAddExpense.copy(category = category,
-//        description = description, wallet = wallet,
-//        transactionTime = Date()
-//    )
-//
-
-//    _expenseLiveData.value = userAddExpense
-//}

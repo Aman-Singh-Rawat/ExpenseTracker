@@ -13,7 +13,7 @@ import com.internship.expensetracker.data.models.Transaction
 import com.internship.expensetracker.databinding.BudgetItemLayoutBinding
 import com.internship.expensetracker.util.Constant
 
-class BudgetAdapter(val context: Context): RecyclerView.Adapter<BudgetAdapter.BudgetViewHolder>() {
+class BudgetAdapter(val context: Context, private val listener: RecentTransAdapter.BudgetItemClicked): RecyclerView.Adapter<BudgetAdapter.BudgetViewHolder>() {
     private var sumOfTransaction = 0.0
     private var sumOfCommonCategory: Map<String, Transaction> = mutableMapOf()
     private var budgetList: List<Budget> = mutableListOf()
@@ -37,8 +37,6 @@ class BudgetAdapter(val context: Context): RecyclerView.Adapter<BudgetAdapter.Bu
                 } else {
                     tvExceedLimit.visibility = View.GONE
                     imgWarning.visibility = View.GONE
-                    println("budgetMax is:: $budgetMax")
-                    println("budgetAchieve is:: ${budgetAchieve}")
                     tvRemaining.text = "Remaining $${budgetMax - (budgetAchieve)}".removeSuffix(".0")
                 }
             }
@@ -67,7 +65,9 @@ class BudgetAdapter(val context: Context): RecyclerView.Adapter<BudgetAdapter.Bu
     }
 
     override fun onBindViewHolder(holder: BudgetViewHolder, position: Int) {
-        holder.bind(budgetList[position])
+        val budget = budgetList[position]
+        holder.bind(budget)
+        holder.itemView.setOnClickListener { listener.onBudgetClicked(budget.budgetId) }
     }
 
     private fun viewsColorChange(binding: BudgetItemLayoutBinding, budget: Budget) {

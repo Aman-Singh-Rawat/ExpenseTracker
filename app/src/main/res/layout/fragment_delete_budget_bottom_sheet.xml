@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presenter.screen.fragment.budget.DeleteBudgetBottomSheetFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glBottomRemoveStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glBottomRemoveEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <View
+            android:id="@+id/littleRoundedView"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:background="@drawable/bg_filter_little_top_rounded_view"
+            app:layout_constraintEnd_toEndOf="@id/glBottomRemoveEnd"
+            app:layout_constraintStart_toStartOf="@id/glBottomRemoveStart"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRemoveThisTransaction"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="@string/remove_this_budget"
+            style="@style/tvFilterTransaction"
+            app:layout_constraintTop_toBottomOf="@id/littleRoundedView"
+            app:layout_constraintEnd_toEndOf="@id/glBottomRemoveEnd"
+            app:layout_constraintStart_toStartOf="@id/glBottomRemoveStart"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAreYouSure"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/_12ssp"
+            android:letterSpacing="0.01"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:textColor="@color/light_20"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/are_you_sure_do_you_wanna_remove_this_budget"
+            app:layout_constraintEnd_toEndOf="@id/glBottomRemoveEnd"
+            app:layout_constraintStart_toStartOf="@id/glBottomRemoveStart"
+            app:layout_constraintTop_toBottomOf="@id/tvRemoveThisTransaction" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAreYouSure">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btnEdit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:padding="@dimen/_10sdp"
+                android:text="NO"
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:textColor="@color/violate"
+                android:textSize="@dimen/_14ssp"
+                android:gravity="center"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_7sdp"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_gravity="bottom"
+                android:backgroundTint="@color/violate_20"
+                android:foreground="?android:selectableItemBackground"
+                android:background="@drawable/bg_sign_up_btn"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btnYes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:padding="@dimen/_10sdp"
+                android:text="Yes"
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp"
+                android:gravity="center"
+                android:layout_marginStart="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_gravity="bottom"
+                android:foreground="?android:selectableItemBackground"
+                android:background="@drawable/bg_sign_up_btn"/>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

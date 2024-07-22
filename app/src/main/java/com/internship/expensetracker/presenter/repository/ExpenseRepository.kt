@@ -36,4 +36,8 @@ class ExpenseRepository(private val dao: TransactionDao) {
     fun getTodayTransaction(startDate: Date, endDate: Date): LiveData<List<Transaction>> {
         return dao.getTodayTransaction(startDate, endDate)
     }
+
+    fun getTransactionUsingQuery(category: String): LiveData<List<Transaction>> {
+        return dao.getTransactionUsingQuery(category)
+    }
 }

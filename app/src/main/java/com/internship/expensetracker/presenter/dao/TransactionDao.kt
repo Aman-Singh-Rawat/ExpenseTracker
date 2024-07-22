@@ -34,4 +34,7 @@ interface TransactionDao {
 
     @Query("SELECT * FROM `transaction` WHERE transactionTime >= :startDate AND transactionTime < :endDate")
     fun getTodayTransaction(startDate: Date, endDate: Date): LiveData<List<Transaction>>
+
+    @Query("SELECT * FROM `transaction` WHERE category = :category")
+    fun getTransactionUsingQuery(category: String): LiveData<List<Transaction>>
 }

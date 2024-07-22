@@ -8,6 +8,12 @@
     <string name="login_underline"><u>Login</u></string>
     <string name="sign_up_underline"><u>Sign Up</u></string>
     <string name="don_t_have_an_account_yet">Don\'t have an account yet?</string>
+    <string name="detail_budget">Detail Budget</string>
+    <string name="remainining">Remainining</string>
+    <string name="you_ve_exceed_the_limit">You’ve exceed the limit</string>
+    <string name="edit">Edit</string>
+    <string name="are_you_sure_do_you_wanna_remove_this_budget">Are you sure do you wanna remove this budget?</string>
+    <string name="remove_this_budget">Remove this budget?</string>
 
     <!--      Category Array              -->
     <string-array name="addExpenseCategoryArray">

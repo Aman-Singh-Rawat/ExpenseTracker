@@ -12,8 +12,8 @@ import com.internship.expensetracker.util.Constant
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class RecentTransAdapter(private val context: Context, private val listener: onBudgetItemClicked): RecyclerView.Adapter<RecentTransAdapter.RecentTransViewHolder>() {
-    var recentList: List<Transaction> = emptyList()
+class RecentTransAdapter(private val context: Context, private val listener: RecentTransAdapter.BudgetItemClicked): RecyclerView.Adapter<RecentTransAdapter.RecentTransViewHolder>() {
+    private var recentList: List<Transaction> = emptyList()
     inner class RecentTransViewHolder(val binding: RecentTransacationItemBinding)
         : RecyclerView.ViewHolder(binding.root) {
             fun bind(transaction: Transaction) {
@@ -66,7 +66,6 @@ class RecentTransAdapter(private val context: Context, private val listener: onB
     override fun onBindViewHolder(holder: RecentTransViewHolder, position: Int) {
         holder.bind(recentList[position])
         holder.itemView.setOnClickListener {
-            println("RecentTransactionAdapter:: ${recentList[position].transactionId}")
             listener.onBudgetClicked(recentList[position].transactionId)
         }
     }
@@ -76,7 +75,7 @@ class RecentTransAdapter(private val context: Context, private val listener: onB
         notifyDataSetChanged()
     }
 
-    interface onBudgetItemClicked {
+    interface BudgetItemClicked {
         fun onBudgetClicked(transactionId: String)
     }
 }

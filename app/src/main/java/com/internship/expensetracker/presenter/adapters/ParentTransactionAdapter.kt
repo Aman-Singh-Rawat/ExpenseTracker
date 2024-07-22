@@ -11,7 +11,7 @@ import java.util.*
 
 class ParentTransactionAdapter(
     private val context: Context,
-    private val listener: RecentTransAdapter.onBudgetItemClicked
+    private val listener: RecentTransAdapter.BudgetItemClicked
 ) : RecyclerView.Adapter<ParentTransactionAdapter.ParentTransactionViewHolder>() {
 
     private var headingGroups: Map<String, List<Transaction>> = emptyMap()

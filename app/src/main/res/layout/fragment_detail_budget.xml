@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/glDetailBudgetStart"
@@ -47,7 +47,7 @@
             android:layout_marginTop="@dimen/_2sdp"
             android:gravity="center"
             android:textColor="@color/dark_100"
-            android:text="Detail Budget"
+            android:text="@string/detail_budget"
             android:fontFamily="@font/inter_bold"
             app:layout_constraintBottom_toBottomOf="@+id/imgTrash"
             app:layout_constraintEnd_toEndOf="parent"
@@ -105,9 +105,10 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBudgetCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Shopping"
+                tools:text="Shopping"
                 android:textColor="@color/dark_100"
                 android:textSize="@dimen/_14ssp"
                 android:letterSpacing="0.01"
@@ -124,7 +125,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_bold"
             android:letterSpacing="0.02"
-            android:text="Remainining"
+            android:text="@string/remainining"
             android:textColor="@color/dark_100"
             android:textSize="@dimen/_19ssp"
             android:layout_marginTop="@dimen/_25sdp"
@@ -137,7 +138,7 @@
             style="@style/tvMoney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$0"
+            tools:text="$0"
             android:textColor="@color/dark_100"
             android:includeFontPadding="false"
             app:layout_constraintTop_toBottomOf="@id/tvRemaining"
@@ -170,6 +171,7 @@
             app:layout_constraintStart_toStartOf="@id/glDetailBudgetStart">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvExceedLimit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_12sdp"
@@ -179,7 +181,8 @@
                 android:paddingHorizontal="@dimen/_10sdp"
                 android:drawablePadding="@dimen/_8sdp"
                 android:fontFamily="@font/inter_medium"
-                android:text="You’ve exceed the limit"
+                android:text="@string/you_ve_exceed_the_limit"
+                android:visibility="gone"
                 android:drawableStart="@drawable/ic_white_warning"/>
 
 
@@ -199,7 +202,7 @@
             android:foreground="?android:selectableItemBackground"
             android:gravity="center"
             android:padding="@dimen/_10sdp"
-            android:text="Edit"
+            android:text="@string/edit"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/_14ssp"

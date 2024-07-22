@@ -60,4 +60,9 @@
         android:name="com.internship.expensetracker.presenter.screen.fragment.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/deleteBudgetBottomSheetFragment"
+        android:name="com.internship.expensetracker.presenter.screen.fragment.budget.DeleteBudgetBottomSheetFragment"
+        android:label="fragment_delete_budget_bottom_sheet"
+        tools:layout="@layout/fragment_delete_budget_bottom_sheet" />
 </navigation>

@@ -29,4 +29,8 @@ class BudgetRepository(private val dao: BudgetDao) {
     fun getSelectedBudget(startDate: Date, endDate: Date): LiveData<List<Budget>> {
         return dao.getSelectedBudget(startDate, endDate)
     }
+
+    suspend fun getBudget(budgetId: String): Budget {
+        return dao.getBudget(budgetId)
+    }
 }

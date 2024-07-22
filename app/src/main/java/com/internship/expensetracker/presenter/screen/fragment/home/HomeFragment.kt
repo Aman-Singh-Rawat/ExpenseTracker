@@ -26,7 +26,7 @@ import com.internship.expensetracker.util.Constant
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
-class HomeFragment : BaseFragment(), RecentTransAdapter.onBudgetItemClicked {
+class HomeFragment : BaseFragment(), RecentTransAdapter.BudgetItemClicked {
     private val transactionViewModel: TransactionViewModel by viewModels {
         TransactionViewModelFactory(
             ExpenseRepository(

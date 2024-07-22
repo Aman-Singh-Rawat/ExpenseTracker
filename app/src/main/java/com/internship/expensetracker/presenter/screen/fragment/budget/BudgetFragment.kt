@@ -6,12 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.internship.expensetracker.R
 import com.internship.expensetracker.data.models.Transaction
 import com.internship.expensetracker.databinding.FragmentBudgetBinding
 import com.internship.expensetracker.presenter.adapters.BudgetAdapter
+import com.internship.expensetracker.presenter.adapters.RecentTransAdapter
 import com.internship.expensetracker.presenter.database.TransactionDatabase
 import com.internship.expensetracker.presenter.repository.BudgetRepository
 import com.internship.expensetracker.presenter.repository.ExpenseRepository
@@ -23,13 +25,12 @@ import com.internship.expensetracker.util.Constant
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
-class BudgetFragment : Fragment() {
+class BudgetFragment : Fragment(), RecentTransAdapter.BudgetItemClicked {
     private var transactionList: List<Transaction> = listOf()
     private val calendar = Calendar.getInstance()
     private val simpleDateFormat = SimpleDateFormat("MMMM")
-    private var commonBudgetMap: MutableMap<String, Any> = mutableMapOf()
     private val budgetAdapter by lazy {
-        BudgetAdapter(requireActivity())
+        BudgetAdapter(requireActivity(), this)
     }
     private lateinit var binding: FragmentBudgetBinding
     private val viewModel: BudgetViewModel by activityViewModels {
@@ -134,5 +135,10 @@ class BudgetFragment : Fragment() {
             set(Calendar.SECOND, 59)
             set(Calendar.MILLISECOND, 999)
         } as Calendar
+    }
+
+    override fun onBudgetClicked(transactionId: String) {
+        findNavController().navigate(R.id.detailBudgetFragment,
+            bundleOf(Constant.TRANSACTION_ID to transactionId))
     }
 }
