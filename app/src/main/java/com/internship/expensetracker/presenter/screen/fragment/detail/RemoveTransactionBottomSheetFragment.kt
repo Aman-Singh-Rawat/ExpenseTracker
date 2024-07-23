@@ -51,11 +51,11 @@ class RemoveTransactionBottomSheetFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnYes.setOnClickListener {
-            viewModel.getSelectedTransaction(transactionId).observe(viewLifecycleOwner) {
-                viewModel.deleteTransaction(it)
-
+            viewModel.deleteTransactionUsingId(transactionId)
+            dismiss()
+            if (isAdded) {
+                val dialog = Dialog(requireActivity())
                 (activity as HomeContainerActivity).onBackPressed()
-                val dialog = Dialog(requireContext())
                 dialog.setCancelable(false)
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
                 dialog.setContentView(R.layout.custom_toast_removed_successfully)
@@ -67,7 +67,7 @@ class RemoveTransactionBottomSheetFragment : BottomSheetDialogFragment() {
                 dialog.show()
                 Handler(Looper.getMainLooper()).postDelayed({
                     dialog.dismiss()
-                }, 1600)
+                }, 1000)
             }
         }
     }

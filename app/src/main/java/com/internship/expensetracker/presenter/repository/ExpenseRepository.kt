@@ -23,6 +23,10 @@ class ExpenseRepository(private val dao: TransactionDao) {
         dao.deleteTransaction(transaction)
     }
 
+    suspend fun deleteTransactionUsingId(transactionId: String) {
+        dao.deleteTransactionUsingId(transactionId)
+    }
+
     fun getSumOfAllTransaction() : LiveData<Double> {
         return dao.getSumOfAllTransaction()
     }

@@ -20,6 +20,9 @@ interface TransactionDao {
     @Delete
     suspend fun deleteTransaction(transaction: Transaction)
 
+    @Query("DELETE FROM `transaction` WHERE transactionId = :transactionId")
+    suspend fun deleteTransactionUsingId(transactionId: String)
+
     @Query("SELECT SUM(transactionMoney) FROM `transaction`")
     fun getSumOfAllTransaction() : LiveData<Double>
 

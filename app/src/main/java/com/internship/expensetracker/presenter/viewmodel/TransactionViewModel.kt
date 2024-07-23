@@ -32,6 +32,12 @@ class TransactionViewModel(private val repository: ExpenseRepository): ViewModel
         }
     }
 
+    fun deleteTransactionUsingId(transactionId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteTransactionUsingId(transactionId)
+        }
+    }
+
     fun getTodayTransaction(startDate: Date, endDate: Date): LiveData<List<Transaction>> {
         return repository.getTodayTransaction(startDate, endDate)
     }

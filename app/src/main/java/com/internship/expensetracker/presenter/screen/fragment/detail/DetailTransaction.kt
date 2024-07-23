@@ -68,8 +68,9 @@ class DetailTransaction : Fragment() {
         }
 
         binding.imgTrash.setOnClickListener {
-            findNavController().navigate(R.id.removeTransactionBottomSheetFragment,
-                bundleOf(Constant.TRANSACTION_ID to transactionId))
+            val bottomSheetDialog = RemoveTransactionBottomSheetFragment()
+            bottomSheetDialog.arguments = bundleOf(Constant.TRANSACTION_ID to transactionId)
+            bottomSheetDialog.show(parentFragmentManager, "removeTransactionBottomSheet")
         }
 
 
