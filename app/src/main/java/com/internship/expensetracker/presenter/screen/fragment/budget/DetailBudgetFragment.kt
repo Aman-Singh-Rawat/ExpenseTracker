@@ -75,8 +75,9 @@ class DetailBudgetFragment : Fragment() {
         }
 
         binding.imgTrash.setOnClickListener {
-            findNavController().navigate(R.id.deleteBudgetBottomSheetFragment,
-                bundleOf(Constant.TRANSACTION_ID to transactionId))
+            val dialog = DeleteBudgetBottomSheetFragment()
+            dialog.arguments = bundleOf(Constant.TRANSACTION_ID to transactionId)
+            dialog.show(parentFragmentManager, "delete")
         }
     }
 

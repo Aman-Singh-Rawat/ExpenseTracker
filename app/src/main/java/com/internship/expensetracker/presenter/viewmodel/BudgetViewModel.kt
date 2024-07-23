@@ -30,6 +30,12 @@ class BudgetViewModel(private val repository: BudgetRepository): ViewModel() {
         }
     }
 
+    fun deleteBudgetWithId(budgetId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteBudgetWithId(budgetId)
+        }
+    }
+
     fun getSelectedBudget(startDate: Date, endDate: Date): LiveData<List<Budget>> {
         return repository.getSelectedBudget(startDate, endDate)
     }

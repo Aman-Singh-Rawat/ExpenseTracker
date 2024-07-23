@@ -22,6 +22,10 @@ class BudgetRepository(private val dao: BudgetDao) {
         dao.deleteBudget(budget)
     }
 
+    suspend fun deleteBudgetWithId(budgetId: String) {
+        dao.deleteBudgetWithId(budgetId)
+    }
+
     fun getAllBudget(): LiveData<List<Budget>> {
         return dao.getAllBudget()
     }
