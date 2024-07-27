@@ -1,18 +1,18 @@
 package com.internship.expensetracker.presenter.screen.fragment.transaction
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.internship.expensetracker.R
 import com.internship.expensetracker.databinding.FragmentFilterTransactionBottomSheetBinding
 import com.internship.expensetracker.presenter.adapters.FilterByAdapter
 
 class FilterTransactionBottomSheet : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentFilterTransactionBottomSheetBinding
+    private val filterAdapter = FilterByAdapter()
+    private val sortAdapter = FilterByAdapter()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,8 +24,27 @@ class FilterTransactionBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.rvFilterBy.adapter = FilterByAdapter(listOf("Income", "Expense", "Transfer"))
+        setUpViews()
+    }
 
-        binding.rvSortBy.adapter = FilterByAdapter(listOf("Highest", "Lowest", "Newest", "Oldest"))
+    private fun setUpViews() {
+        binding.rvFilterBy.adapter = filterAdapter
+        filterAdapter.updateUi(listOf("Income", "Expense", "Transfer"))
+
+        binding.rvSortBy.adapter = sortAdapter
+        sortAdapter.updateUi(listOf("Highest", "Lowest", "Newest", "Oldest"))
+
+        binding.tvReset.setOnClickListener {
+            filterAdapter.resetList()
+            sortAdapter.resetList()
+        }
+
+        binding.btnApply.setOnClickListener {
+            val filterValue = filterAdapter.getFilterValue()
+            val sortList = sortAdapter.getSortValue()
+
+            println("filterList is:: $filterValue and sortList is:: $sortList")
+        }
+
     }
 }
